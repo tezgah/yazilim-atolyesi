@@ -1,0 +1,6 @@
+[book]
+authors = ["Mehmet Fatih Köksal"]
+language = "en"
+multilingual = false
+src = "src"
+title = "DiTiB Yazılım Kampı"
