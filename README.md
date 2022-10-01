@@ -1,0 +1,1 @@
+`DiTiB Bonn` bunyesinde duzenlenen `DitiB Yazilim Kampi` isimli egitim programinin icerik sayfasidir. Baslangic sayfasina [buradan](./src/README.md) ulasabilirsiniz.
