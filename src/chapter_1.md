@@ -81,7 +81,11 @@ Birlikte hasaplayalim:
 5 + 10 / 2 - 2 * 4
 ```
 
-Matematikte kural olarak carpma ve bolme islemi
+Matematikte kural olarak carpma ve bolme islemi toplama ve cikarmadan once yapilir:
+
+```racket
+5 + (10 / 2) - (2 * 4)
+```
 
 Yukaridaki hesaplamayi `Racket` dilinde yazmak istersek:
 
