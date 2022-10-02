@@ -293,6 +293,18 @@ Mod, `solid` ya da `outline` degerlerinden biri olabilir.
 
 Renk isimleri icin buyuk/kucuk harf farketmez. "black" ve "Black" ayni renktir. Ayrica bosluk karakteri de onemsenmez. Yani "light red" ve "lightred" ayni renktir. Kullanabileceginiz tum renklerin listesi icin [buraya](https://docs.racket-lang.org/draw/color-database___.html) bakabilirsiniz.
 
+## rectangle
+
+```racket
+(rectangle width height mode color) → image?
+  width : (and/c real? (not/c negative?))
+  height : (and/c real? (not/c negative?))
+  mode : mode?
+  color : image-color?
+```
+
+Verilen genislik, yukseklik, mod ve renk degerlerini kullanarak bir dikdortgen olusturur.
+
 ## above
 
 ```racket
