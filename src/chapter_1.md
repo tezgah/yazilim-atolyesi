@@ -98,7 +98,7 @@ Yukaridaki hesaplamayi `Racket` dilinde yazmak istersek:
 
 Racket dilinin yapi taslari arasinda sayilardan baska `turler` de var. 
 
-Mesela asagidaki bir `Metin` (String):
+Mesela asagidaki bir `String` (Metin):
 
 ```racket
 "Fatih"
@@ -110,7 +110,7 @@ Mesela asagidaki bir `Metin` (String):
 (odd? 42)
 ```
 
-Racket'da bulabileceginiz bir baska deger ise `Resim` (Image). Asagidaki ifadeyi calistirirsaniz size 50 yaricapinda, ici dolu, kirmizi bir daire resmi uretir.
+Racket'da bulabileceginiz bir baska deger ise `Image` (Resim). Asagidaki ifadeyi calistirirsaniz size 50 yaricapinda, ici dolu, kirmizi bir daire resmi uretir.
 
 ```racket
 (circle 50 "solid" "red")
@@ -144,9 +144,12 @@ Ya da resim kullanarak:
 (circle 20 "solid" "red")
 (rectangle 100 50 "solid" "blue")
 (above (circle 20 "solid" "red") (rectangle 100 50 "solid" "blue"))
+(overlay (circle 30 "solid" "red") (rectangle 200 100 "outline" "black"))
 ```
 
-## Ifadeleri isimlendirme: define
+Bknz: [circle](#circle), [rectangle](#rectangle), [above](#above), [overlay](#overlay), [overlay/xy](#overlayxy)
+
+## Ifadelerin Isimlendirilmesi: define
 
 Yazdigimiz ifadelere bir isim vererek onlari daha sonra kullanabiliriz:
 
@@ -185,7 +188,7 @@ Asagidaki ornegin yukaridaki kurallara uyup uymadigina inceleyelim:
 
 ## Alistirmalar
 
-Simdi ogrendiklerimizi kullanarak Almanya'nin bayragini yapmaya calisalim. Siyah, kirmizi ve altin rengi olmak uzere 3 tane dikdortgene ihtiyacimiz var. Bunlari ust uste koyarsak oldu demektir:
+Simdiye kadar ogrendiklerimizi kullanarak Almanya'nin bayragini yapmaya calisalim. Siyah, kirmizi ve altin rengi olmak uzere 3 tane dikdortgene ihtiyacimiz var. Bunlari ust uste koyarsak oldu demektir:
 
 ```racket
 (define siyah-dikdortgen (rectangle 500 100 "solid" "black"))
@@ -263,7 +266,7 @@ Ornegimize geri donecek olursak:
     (+ 10.16 (/ (* 17.45 350) 100))))
 ```
 
-## Kaynaklar
+# Kaynaklar
 
 Bu dersi daha iyi anlayabilmek icin asagidaki kaynaklardan faydalanabilirsiniz:
 
@@ -271,3 +274,55 @@ Bu dersi daha iyi anlayabilmek icin asagidaki kaynaklardan faydalanabilirsiniz:
 - Video (Almanca): [DrRacket, REPL, Auswertung, Literale, komplexe Ausdrücke](https://www.youtube.com/watch?v=96QmmOUEduM)
 - Video (Almanca): [Spezialform define, Identifier, Definitionsfenster](https://www.youtube.com/watch?v=_n6HZkiC3aM)
 - Video (Almanca): [Lambda-Abstraktion, Funktionsdefinition, Applikation](https://www.youtube.com/watch?v=vwdEO0hzTGg)
+
+
+# Notlar
+
+## circle
+
+```racket
+(circle radius mode color) → image?
+  radius : (and/c real? (not/c negative?))
+  mode : mode?
+  color : image-color?
+```
+
+Verilen yaricap, mod ve renk argumanlarini kullanarak bir daire olusturur.
+
+Mod, `solid` ya da `outline` degerlerinden biri olabilir.
+
+Renk isimleri icin buyuk/kucuk harf farketmez. "black" ve "Black" ayni renktir. Ayrica bosluk karakteri de onemsenmez. Yani "light red" ve "lightred" ayni renktir. Kullanabileceginiz tum renklerin listesi icin [buraya](https://docs.racket-lang.org/draw/color-database___.html) bakabilirsiniz.
+
+## above
+
+```racket
+(above i1 i2 is ...) → image?
+  i1 : image?
+  i2 : image?
+  is : image?
+```
+
+Verilen tum resimleri merkezleri boyunca hizalanmış dikey bir sıraya yerleştirerek yeni bir resim oluşturur.
+
+## overlay
+
+```racket
+(overlay i1 i2 is ...) → image?
+  i1 : image?
+  i2 : image?
+  is : image?
+```
+
+Verilen tum resimleri ust uste koyarak tek bir resim olusturur. Birinci resim ikincinin uzerine, o da ucuncunun uzerine ... seklinde devam eder. Tum resimler orta noktalarindan sabitlenir.
+
+## overlay/xy
+
+```racket
+(overlay/xy i1 x y i2) → image?
+  i1 : image?
+  x : real?
+  y : real?
+  i2 : image?
+```
+
+i1'i i2'nin üstüne yerleştirerek bir `image` oluşturur. Görüntüler başlangıçta sol üst köşelerinden sabitlenir ve ardından i2, x piksel sağa ve y piksel aşağı kaydırılır.
