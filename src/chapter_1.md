@@ -142,7 +142,8 @@ Ya da resim kullanarak:
 
 ```racket
 (circle 20 "solid" "red")
-(rectangle 100 50 "solid" "blue")
+(rectangle 100 50 "outline" "blue")
+(star 50 "solid" "red")
 (above (circle 20 "solid" "red") (rectangle 100 50 "solid" "blue"))
 (overlay (circle 30 "solid" "red") (rectangle 200 100 "outline" "black"))
 ```
@@ -305,6 +306,17 @@ Renk isimleri icin buyuk/kucuk harf farketmez. "black" ve "Black" ayni renktir. 
 
 Verilen genislik, yukseklik, mod ve renk degerlerini kullanarak bir dikdortgen olusturur.
 
+## star
+
+```racket
+(star side-length mode color) → image?
+  side-length : (and/c real? (not/c negative?))
+  mode : mode?
+  color : image-color?
+```
+
+Beş noktalı bir yıldız oluşturur. Kenar uzunluğu argümanı, çevreleyen beşgenin kenar uzunluğunu belirler.
+
 ## above
 
 ```racket
@@ -338,3 +350,7 @@ Verilen tum resimleri ust uste koyarak tek bir resim olusturur. Birinci resim ik
 ```
 
 i1'i i2'nin üstüne yerleştirerek bir `image` oluşturur. Görüntüler başlangıçta sol üst köşelerinden sabitlenir ve ardından i2, x piksel sağa ve y piksel aşağı kaydırılır.
+
+## Ev Odevi
+
+Racket dili tarafindan tanimlanmis [circle](#circle), [rectangle](#rectangle), [start](#start), [overlay](#overlay) ve [overlay/xy](#overlayxy) gibi fonksiyonlari kullanarak Turk Bayragimizi cizebilir misiniz?
