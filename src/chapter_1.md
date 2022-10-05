@@ -2,36 +2,36 @@
 
 ## DrRacket: Kurulum ve Ayarlar
 
-Ilk olarak asagidaki baglantiyi kullanarak `DrRacket` programini indirelim, kuralim ve ayarlarini yapalim:
+İlk olarak aşağıdaki bağlantıyı kullanarak `DrRacket` programını indirelim, kuralım ve ayarlarını yapalım:
 
 ```
 https://download.racket-lang.org/
 ```
 
-DrRacket istenirse `Almanca` olarak da kullanilabilir.
+DrRacket istenirse `Almanca` olarak da kullanılabilir.
 
 ```
-Help > Deutsche Benutzeroberflache fur DrRacket > In Ordnung - Beenden
+Help > Deutsche Benützeroberflache für DrRacket > In Ordnung - Beenden
 ```
 
-Bu ayari yaptiktan sonra DrRacket programini yeniden baslatmaniz gerekmektedir.
+Bu ayarı yaptıktan sonra DrRacket programını yeniden başlatmanız gerekmektedir.
 
-DrRacket, programlamaya giris egitimini kolaylastirmak icin bizlere yardimci diller ve egitim paketleri sunar. Simdi bu ayarlari yapalim:
+DrRacket, programlamaya giriş eğitimini kolaylaştırmak için bizlere yardımcı diller ve eğitim paketleri sunar. Şimdi bu ayarları yapalım:
 
 ```
 Language > Choose Language > Die Macht der Abstraktion - Anfänger
 Language > Add Teachpack > Image2.ss
 ```
 
-Dil ve egitim paketi sectikten sonra `Run` tusuna basarak yaptigimiz degisiklikleri kullanima alalim.
+Dil ve eğitim paketi seçtikten sonra `Run` tuşuna basarak yaptığımız değişiklikleri kullanıma alalım.
 
-DrRacket 2 ayri pencereden olusur. Bunlar `Definition Window` (Tanimlama Penceresi) ve `Interaktion Window` (Etkilesim Penceresi) olarak adlandirilir.
+DrRacket 2 ayrı pencereden oluşur. Bunlar `Definition Window` (Tanımlama Penceresi) ve `Interaktion Window` (Etkileşim Penceresi) olarak adlandırılır.
 
-Etkilesim penceresini kullanarak Racket dilini tanimaya baslayalim.
+Etkileşim penceresini kullanarak Racket dilini tanımaya başlayalım.
 
 ## Basit Hesaplamalar
 
-Etkilesim penceresini bir hesap makinasi gibi dusunebilirsiniz. Haydi ona basit bir seyler soralim:
+Etkileşim penceresini bir hesap makinası gibi düşünebilirsiniz. Haydi ona basit bir şeyler soralım:
 
 ```racket
 42
@@ -43,29 +43,29 @@ Ya da:
 3.141592653
 ```
 
-Daha karisik bir soru:
+Daha karışık bir soru:
 
 ```racket
 (+ 40 2)
 ```
 
-Yukarida farkinda olmadan ilk fonksiyon cagiriminizi yapmis oldunuz. `+` fonksiyonun adi, `40` ve `2` parametreleri.
+Yukarıda farkında olmadan ilk fonksiyon çağırımınızı yapmış oldunuz. `+` fonksiyonun adı, `40` ve `2` parametreleri.
 
 > Kural:
-> Fonksiyonlar parantez icinde yazilir.
+> Fonksiyonlar parantez içinde yazılır.
 
 > Kural:
-> Fonksiyon adi parametrelerden once yazilir. (Prefix Notation)
+> Fonksiyon adı parametrelerden önce yazılır. (Prefix Notation)
 
 > Kural:
-> Fonksiyon adi ve parameteleri arasina bosluk karakteri yazilir.
+> Fonksiyon adı ve parameteleri arasına boşluk karakteri yazılır.
 > (function argument1 argument2 argument3 ...)
 
-[//]: # (TODO: Expression [Ausdruck] vs Evaluation [Auswertung])
+[//]: # (TODO: Expression [Ausdruck] vs Evalüation [Auswertung])
 
-## Daha Karmasik Hesaplamalar
+## Daha Karmaşık Hesaplamalar
 
-Ic ice gecmis, daha kompleks sorular da sorabiliriz.
+İç içe geçmiş, daha kompleks sorular da sorabiliriz.
 
 ```racket
 (odd? (+ 40 2))
@@ -73,59 +73,59 @@ Ic ice gecmis, daha kompleks sorular da sorabiliriz.
 ```
 
 > Kural:
-> Hesaplar iceriden disariya dogru yapilir. En once en icteki parantezin degeri hesaplanir. Daha sonra cikan sonuc ile hesaba devam edilir.
+> Hesaplar içeriden dışarıya doğru yapılır. En önce en içteki parantezin değeri hesaplanır. Daha sonra çıkan sonuç ile hesaba devam edilir.
 
-Birlikte hasaplayalim:
+Birlikte hasaplayalım:
 
 ```racket
 5 + 10 / 2 - 2 * 4
 ```
 
-Matematikte kural olarak carpma ve bolme islemi toplama ve cikarmadan once yapilir:
+Matematikte kural olarak çarpma ve bölme işlemi toplama ve çıkarmadan önce yapılır:
 
 ```racket
 5 + (10 / 2) - (2 * 4)
 ```
 
-Yukaridaki hesaplamayi `Racket` dilinde yazmak istersek:
+Yukarıdaki hesaplamayı `Racket` dilinde yazmak istersek:
 
 ```racket
 (- (+ 5 (/ 10 2)) (* 2 4)) # ya da
 (* 5 (- (/ 10 2) (* 2 4)))
 ```
 
-## Sadece Sayilar mi var?
+## Sadece Sayılar mı var?
 
-Racket dilinin yapi taslari arasinda sayilardan baska `turler` de var. 
+Racket dilinin yapı taşları arasında sayılardan başka `türler` de var. 
 
-Mesela asagidaki bir `String` (Metin):
+Mesela aşağıdaki bir `string` (Metin):
 
 ```racket
 "Fatih"
 ```
 
-`odd` ingilizce de **tek sayi**lari ifade etmek icin kullaniliyor. `odd?` fonksiyonu ise Racket dilinde eger verilen sayi tek ise `#t` (True: yani dogru), cift ise `#f` (False: yani yanlis) degerini donuyor. `#t` ve `#f` degerlerini `Boolean` (mantiksal degerler) denir.
+`odd` ingilizce de **tek sayı**ları ifade etmek için kullanılıyor. `odd?` fonksiyonu ise Racket dilinde eğer verilen sayı tek ise `#t` (True: yani doğru), çift ise `#f` (False: yani yanlış) değerini dönüyor. `#t` ve `#f` değerlerini `boolean` (mantıksal değerler) denir.
 
 ```racket
 (odd? 42)
 ```
 
-Racket'da bulabileceginiz bir baska deger ise `Image` (Resim). Asagidaki ifadeyi calistirirsaniz size 50 yaricapinda, ici dolu, kirmizi bir daire resmi uretir.
+Racket'da bulabileceğiniz bir başka değer ise `image` (Resim). Aşağıdaki ifadeyi çalıştırırsanız size 50 yarıçapında, içi dolu, kırmızı bir daire resmi üretir.
 
 ```racket
-(circle 50 "solid" "red")
+(cirçle 50 "solid" "red")
 ```
 
-> IPUCU: DrRacket etkilesim penceresinde `ESC+P` tus kombinasyonu ile en son yazdiginiz satiri geri cagirabilirsiniz.
+> İPUCU: DrRacket etkileşim penceresinde `ESC+P` tus kombinasyonu ile en son yazdığınız satırı geri çağırabilirsiniz.
 
-Iste bunlara `Literals` (Literale) ya da `Constants` diyoruz. Yani Yapıtaşları. En basit değerler. Daha fazla basitleştirilemezler.
+İşte bunlara `Literals` (Literale) ya da `Constants` diyoruz. Yani Yapıtaşları. En basit değerler. Daha fazla basitleştirilemezler.
 
 | Literal |  | Signature |
 |:---|---|---|
-| #t #f | Mantiksal degerler (dogru, yanlis) | boolean |
-| "Fatih" "x" " " | Yazi | string |
-| 0 1983 -42 007 | Tam Sayilar | integer | 
-| 0.42 3.1415 -273.15 | Virgullu sayilar | rational |
+| #t #f | Mantıksal değerler (doğru, yanlış) | boolean |
+| "Fatih" "x" " " | Yazı | string |
+| 0 1983 -42 007 | Tam Sayılar | integer | 
+| 0.42 3.1415 -273.15 | Virgüllü sayılar | rational |
 | &#x2730; | Resimler | image |
 
 
@@ -145,51 +145,51 @@ Ya da resim kullanarak:
 (rectangle 100 50 "outline" "blue")
 (star 50 "solid" "red")
 (above (circle 20 "solid" "red") (rectangle 100 50 "solid" "blue"))
-(overlay (circle 30 "solid" "red") (rectangle 200 100 "outline" "black"))
+(överlay (circle 30 "solid" "red") (rectangle 200 100 "outline" "black"))
 ```
 
 Bknz: [circle](#circle), [rectangle](#rectangle), [above](#above), [overlay](#overlay), [overlay/xy](#overlayxy)
 
-## Ifadelerin Isimlendirilmesi: define
+## İfadelerin İsimlendirilmesi: define
 
-Yazdigimiz ifadelere bir isim vererek onlari daha sonra kullanabiliriz:
+Yazdığımız ifadelere bir isim vererek onları daha sonra kullanabiliriz:
 
 ```racket
 (define pi 3.141592653)
 (define fatih-tel "+49 111222333")
 (define mavi-daire (circle 100 "solid" "blue"))
-(define gun-dakika (* 24 60))
+(define gün-dakika (* 24 60))
 ```
 
-`(define ... ...)` ozel bir form. Bu form hesaplanan bir sey degil, bir efekti var. Ikinci parametredeki ifadeyi birinci parametredeki isme bagliyor.
+`(define ... ...)` özel bir form. Bu form hesaplanan bir şey değil, bir efekti var. İkinci parametredeki ifadeyi birinci parametredeki isme bağlıyor.
 
 ```racket
 (define isim ifade)
 ```
 
 > Kural:
-> isimler ( ) [ ] { } " , ' ` ; # | \ karakterleri ile baslayamaz.
+> isimler ( ) [ ] { } " , ' ` ; # | \ karakterleri ile başlayamaz.
 
 > Kural: 
-> isimler bir sayi ile esit olamaz
+> isimler bir sayı ile eşit olamaz
 
 > Kural:
-> Isimler space, tab, return karakterleri iceremez.
+> İsimler space, tab, return karakterleri içeremez.
 
 > Kural:
-> daha once baska bir degere baglanmis olmamali.
+> daha önce başka bir değere bağlanmış olmamalı.
 
-> Kural: Buyuk/kucuk karakter farketmiyor.
+> Kural: Büyük/küçük karakter farketmiyor.
 
-Asagidaki ornegin yukaridaki kurallara uyup uymadigina inceleyelim:
+Aşağıdaki örneğin yukarıdaki kurallara uyup uymadığına inceleyelim:
 
 ```racket
 (define eu->us$ 1.02)
 ```
 
-## Alistirmalar
+## Alıştırmalar
 
-Simdiye kadar ogrendiklerimizi kullanarak Almanya'nin bayragini yapmaya calisalim. Siyah, kirmizi ve altin rengi olmak uzere 3 tane dikdortgene ihtiyacimiz var. Bunlari ust uste koyarsak oldu demektir:
+Şimdiye kadar öğrendiklerimizi kullanarak Almanya'nın bayrağını yapmaya çalışalım. Siyah, kırmızı ve altın rengi olmak üzere 3 tane dikdörtgene ihtiyacımız var. Bunları üst üste koyarsak oldu demektir:
 
 ```racket
 (define siyah-dikdortgen (rectangle 500 100 "solid" "black"))
@@ -198,28 +198,28 @@ Simdiye kadar ogrendiklerimizi kullanarak Almanya'nin bayragini yapmaya calisali
 (define alman-bayragi (above siyah-dikdortgen kirmizi-dikdortgen altin-dikdortgen))
 ```
 
-Bu tanimlamalari yaptiktan sonra `alman-bayragi` isimli ifadeyi calistirirsak sonucu gorebiliriz:
+Bu tanımlamaları yaptıktan sonra `alman-bayragi` isimli ifadeyi çalıştırırsak sonucu görebiliriz:
 
 ```racket
-alman-bayragi
+alman-bayrağı
 ```
 
-## Fonksiyonlar (Prosedurler): lambda
+## Fonksiyonlar (Prosedürler): lambda
 
-Simdi birlikte elektrik faturamizi hesaplayabilmek icin bir formul yazalim. Benim kullandigim elektrik sirketinin fiyatlandirma kurali su sekilde:
+Şimdi birlikte elektrik faturamızı hesaplayabilmek için bir formül yazalım. Benim kullandığım elektrik şirketinin fiyatlandırma kuralı şu şekilde:
 
 ```racket
-Kullanim Bedeli (Arbeitspreis) = 17,45 ct/kWh
+Kullanım Bedeli (Arbeitspreis) = 17,45 ct/kWh
 Taban Fiyat (Grundpreis)       = 10,16 €/Monat
 ```
 
-Bu sirket taban fiyat olarak aylik 10,16 Euro aliyor. Bunun uzerine kullandigimiz her kWh elektrik icin 17.45 Cents oduyoruz. Matematiksel olarak ifade etmek gerekirse;
+Bu şirket taban fiyat olarak aylık 10,16 Euro alıyor. Bunun üzerine kullandığımız her kWh elektrik için 17.45 Cents ödüyoruz. Matematiksel olarak ifade etmek gerekirse;
 
 ```
-Aylik Fatura = 10.16 + ((17.45 * KULLANIM-MIKTARI) / 100))
+Aylık Fatura = 10.16 + ((17.45 * KULLANIM-MIKTARI) / 100))
 ```
 
-Ornegin, aylik 350 kWh elektrik kullanildiginda;
+Örneğin, aylık 350 kWh elektrik kullanıldığında;
 
 ```
 17.45 * 350 = 6107.5 Cents
@@ -227,39 +227,39 @@ Ornegin, aylik 350 kWh elektrik kullanildiginda;
 61.075 + 10.16 = 71.235 Euro
 ```
 
-Bunu `Racket` dilinde yazalim:
+Bunu `Racket` dilinde yazalım:
 
 ```racket
 (+ 10.16 (/ (* 17.45 KULLANIM-MIKTARI) 100))
 ```
 
-Bu ifadeyi bu calistirabilmek icin `KULLANIM-MIKTARI` yazan yere gercek degerler vermemiz gerekecek. Ornegin, yine 350 kWh elektrik kullanildigini varsayarsak:
+Bu ifadeyi bu çalıştırabilmek için `KULLANIM-MIKTARI` yazan yere gerçek değerler vermemiz gerekecek. Örneğin, yine 350 kWh elektrik kullanıldığını varsayarsak:
 
 ```racket
 (+ 10.16 (/ (* 17.45 350) 100))
 ```
 
-... sonucun 71.235 oldugunu gorebiliriz.
+... sonucun 71.235 olduğunu görebiliriz.
 
-Peki bu ifadeyi icinde degisken olacak sekilde kullanmak istesek? Yani kullanilan elektrik miktari degistikce hesaplayabilen bir fonksiyon yazmak istesek. `lambda` fonksiyonu tam da bu is icin var:
+Peki bu ifadeyi içinde değişken olacak şekilde kullanmak istesek? Yani kullanılan elektrik miktarı değiştikçe hesaplayabilen bir fonksiyon yazmak istesek. `lambda` fonksiyonu tam da bu iş için var:
 
 ```racket
 (lambda ... ...)
 ```
 
-`lambda` birinci parametrede verdigimiz degisken isimlerini ikinci parametredeki ifadece yerine koyarak bize bir fonksiyon (prosedur) geri doner.
+`lambda` birinci parametrede verdiğimiz değişken isimlerini ikinci parametredeki ifadece yerine koyarak bize bir fonksiyon (prosedür) geri döner.
 
 ```racket
 (lambda (x) (+ x 1))
 ```
 
-Uretilen bu fonksiyona `define` kullanrak bir isim verebiliriz.
+Üretilen bu fonksiyona `define` kullanrak bir isim verebiliriz.
 
 ```racket
 (define bir-ekle (lambda (x) (+ x 1)))
 ```
 
-Ornegimize geri donecek olursak:
+Örneğimize geri dönecek olursak:
 
 ```racket
 (define fatura-hesapla
@@ -269,11 +269,11 @@ Ornegimize geri donecek olursak:
 
 # Kaynaklar
 
-Bu dersi daha iyi anlayabilmek icin asagidaki kaynaklardan faydalanabilirsiniz:
+Bu dersi daha iyi anlayabilmek için aşağıdaki kaynaklardan faydalanabilirsiniz:
 
 - Kitap (Almanca): [Schreibe Dein Programm!](https://www.deinprogramm.de/sdp/) Sayfa 40'a kadar.
-- Video (Almanca): [DrRacket, REPL, Auswertung, Literale, komplexe Ausdrücke](https://www.youtube.com/watch?v=96QmmOUEduM)
-- Video (Almanca): [Spezialform define, Identifier, Definitionsfenster](https://www.youtube.com/watch?v=_n6HZkiC3aM)
+- Video (Almanca): [DrRacket, REPL, Auswertung, Literale, komplexe Ausdrucke](https://www.youtube.com/watch?v=96QmmOUEduM)
+- Video (Almanca): [Spezialform define, İdentifier, Definitionsfenster](https://www.youtube.com/watch?v=_n6HZkiC3aM)
 - Video (Almanca): [Lambda-Abstraktion, Funktionsdefinition, Applikation](https://www.youtube.com/watch?v=vwdEO0hzTGg)
 
 
@@ -282,35 +282,35 @@ Bu dersi daha iyi anlayabilmek icin asagidaki kaynaklardan faydalanabilirsiniz:
 ## circle
 
 ```racket
-(circle radius mode color) → image?
-  radius : (and/c real? (not/c negative?))
+(circle radıus mode color) → image?
+  radıus : (and/c real? (not/c negatıve?))
   mode : mode?
   color : image-color?
 ```
 
-Verilen yaricap, mod ve renk argumanlarini kullanarak bir daire olusturur.
+Verilen yarıçap, mod ve renk argümanlarını kullanarak bir daire oluşturur.
 
-Mod, `solid` ya da `outline` degerlerinden biri olabilir.
+Mod, `solid` ya da `outline` değerlerinden biri olabilir.
 
-Renk isimleri icin buyuk/kucuk harf farketmez. "black" ve "Black" ayni renktir. Ayrica bosluk karakteri de onemsenmez. Yani "light red" ve "lightred" ayni renktir. Kullanabileceginiz tum renklerin listesi icin [buraya](https://docs.racket-lang.org/draw/color-database___.html) bakabilirsiniz.
+Renk isimleri için büyük/küçük harf farketmez. "black" ve "Black" aynı renktir. Ayrıca boşluk karakteri de önemsenmez. Yani "light red" ve "lightred" aynı renktir. Kullanabileceğiniz tüm renklerin listesi için [buraya](https://docs.racket-lang.org/draw/color-database___.html) bakabilirsiniz.
 
 ## rectangle
 
 ```racket
 (rectangle width height mode color) → image?
-  width : (and/c real? (not/c negative?))
-  height : (and/c real? (not/c negative?))
+  width : (and/c real? (not/c negatıve?))
+  height : (and/c real? (not/c negatıve?))
   mode : mode?
   color : image-color?
 ```
 
-Verilen genislik, yukseklik, mod ve renk degerlerini kullanarak bir dikdortgen olusturur.
+Verilen genişlik, yükseklik, mod ve renk değerlerini kullanarak bir dikdörtgen oluşturur.
 
 ## star
 
 ```racket
 (star side-length mode color) → image?
-  side-length : (and/c real? (not/c negative?))
+  side-length : (and/c real? (not/c negatıve?))
   mode : mode?
   color : image-color?
 ```
@@ -326,7 +326,7 @@ Beş noktalı bir yıldız oluşturur. Kenar uzunluğu argümanı, çevreleyen b
   is : image?
 ```
 
-Verilen tum resimleri merkezleri boyunca hizalanmış dikey bir sıraya yerleştirerek yeni bir resim oluşturur.
+Verilen tüm resimleri merkezleri boyunca hizalanmış dikey bir sıraya yerleştirerek yeni bir resim oluşturur.
 
 ## overlay
 
@@ -337,20 +337,20 @@ Verilen tum resimleri merkezleri boyunca hizalanmış dikey bir sıraya yerleşt
   is : image?
 ```
 
-Verilen tum resimleri ust uste koyarak tek bir resim olusturur. Birinci resim ikincinin uzerine, o da ucuncunun uzerine ... seklinde devam eder. Tum resimler orta noktalarindan sabitlenir.
+Verilen tüm resimleri üst üste koyarak tek bir resim oluşturur. Birinci resim ikincinin üzerine, o da üçüncünün üzerine ... şeklinde devam eder. Tüm resimler orta noktalarından sabitlenir.
 
 ## overlay/xy
 
 ```racket
-(overlay/xy i1 x y i2) → image?
+overlay/xy i1 x y i2) → image?
   i1 : image?
   x : real?
   y : real?
-  i2 : image?
+  ı2 : image?
 ```
 
 i1'i i2'nin üstüne yerleştirerek bir `image` oluşturur. Görüntüler başlangıçta sol üst köşelerinden sabitlenir ve ardından i2, x piksel sağa ve y piksel aşağı kaydırılır.
 
-# Ev Odevi
+# Ev Ödevi
 
-Racket dili tarafindan tanimlanmis [circle](#circle), [rectangle](#rectangle), [start](#start), [overlay](#overlay) ve [overlay/xy](#overlayxy) gibi fonksiyonlari kullanarak Turk Bayragimizi cizebilir misiniz?
+Racket dili tarafından tanımlanmış [circle](#circle), [rectangle](#rectangle), [start](#start), [overlay](#overlay) ve [overlay/xy](#overlayxy) gibi fonksiyonları kullanarak Türk Bayrağımızı çizebilir misiniz?

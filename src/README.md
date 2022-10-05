@@ -2,26 +2,26 @@
 
 Merhaba,
 
-DiTiB Bonn bunyesinde sundugumuz `DiTiB Yazilim Kampi` sayfasini goruntulemektesiniz. Bu sayfada egitim icerigi ve kullandigimiz materyaller hakkinda bilgiler bulabiliriz.
+DiTiB Bonn bünyesinde sunduğumuz `DiTiB Yazılım Kampı` sayfasını görüntülemektesiniz. Bu sayfada eğitim içeriği ve kullandığımız materyaller hakkında bilgiler bulabilirsiniz.
 
-Derslerimiz programlama ogrenmek isteyen herkese acik ve ucretsizdir. 12-20 yas arasi gencleri ozellikle bekliyoruz. Derslere katilmak icin herhangibir programlama bilgisi gerekmemektedir.
+Derslerimiz programlama öğrenmek isteyen herkese açık ve ücretsizdir. 12-20 yaş arası gençleri özellikle bekliyoruz. Derslere katılmak için herhangibir programlama bilgisi gerekmemektedir.
 
 ## Dersler
 
-Derslerimiz Carsamba gunleri saat 18:00'da, DiTiB Bonn Camii Egitim Merkezi E-1 nolu derslikte yapilmaktadir.
+Derslerimiz Çarşamba günleri saat 18:00'da, DiTiB Bonn Merkez Camii Eğitim Merkezi E-1 nolu derslikte yapılmaktadır.
 
-Derslere gelirken kagit kalem getirmeniz yeterlidir. Varsa `laptop` ya da `klavyesi olan bir tablet` de getirebilirsiniz.
+Derslere gelirken kağıt kalem getirmeniz yeterlidir. Varsa `laptop` ya da `klavyesi olan bir tablet` de getirebilirsiniz.
 
 ## Kaynaklar & Materyaller
 
-Ders suresince asagidaki materyal ve kaynaklardan faydalaniyor olacagiz. Tum bu kaynaklar alanlarinda yetkin arastirmacilar tarafindan gelistirilmis ve siz ogrencilerin kullanimina ucretsiz olarak sunulmustur:
+Ders süresince aşağıdaki materyal ve kaynaklardan faydalanıyor olacağız. Tüm bu kaynaklar, alanlarında yetkin araştırmacılar tarafından geliştirilmiş ve siz öğrencilerin kullanımına ücretsiz olarak sunulmuştur:
 
 - Programlama dili: [Racket](https://racket-lang.org/)
-- Gelistirme ortami: [DrRacket](https://download.racket-lang.org/)
+- Geliştirme ortamı: [DrRacket](https://download.racket-lang.org/)
 - Kitap: [Schreibe Dein Programm!](https://www.deinprogramm.de/sdp/)
-- Egitim videolari: [Informatik I - Database Systems Research Group at U Tübingen](https://www.youtube.com/playlist?list=PL1XF9qjV8kH11R-SRa0g8SaB0DOUhxH5p)
-- Racket dokumantasyonu: [Dokumantasyon](https://docs.racket-lang.org/)
-- Almanca dokumanyasyon: [Sprachebenen und Material zu Schreibe Dein Programm!](https://docs.racket-lang.org/deinprogramm/index.html)
+- Eğitim videoları: [Informatik I - Database Systems Research Group at U Tübingen](https://www.youtube.com/playlist?list=PL1XF9qjV8kH11R-SRa0g8SaB0DOUhxH5p)
+- Racket dokümantasyonu: [Dokümantasyon](https://docs.racket-lang.org/)
+- Almanca dökümantasyon: [Sprachebenen und Material zu Schreibe Dein Programm!](https://docs.racket-lang.org/deinprogramm/index.html)
 
 
-[//]: # (TODO: Katilimcilarin cogunlugun ingilizce bilmiyor. Turkce ve Almanca konusuyorlar.)
+[//]: # (TODO: Katılımcıların çoğunluğun ingilizce bilmiyor. Türkçe ve Almanca konuşuyorlar.)
