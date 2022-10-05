@@ -113,7 +113,7 @@ Mesela aşağıdaki bir `string` (Metin):
 Racket'da bulabileceğiniz bir başka değer ise `image` (Resim). Aşağıdaki ifadeyi çalıştırırsanız size 50 yarıçapında, içi dolu, kırmızı bir daire resmi üretir.
 
 ```racket
-(cirçle 50 "solid" "red")
+(circle 50 "solid" "red")
 ```
 
 > İPUCU: DrRacket etkileşim penceresinde `ESC+P` tus kombinasyonu ile en son yazdığınız satırı geri çağırabilirsiniz.
@@ -282,10 +282,10 @@ Bu dersi daha iyi anlayabilmek için aşağıdaki kaynaklardan faydalanabilirsin
 ## circle
 
 ```racket
-(circle radıus mode color) → image?
-  radıus : (and/c real? (not/c negatıve?))
-  mode : mode?
-  color : image-color?
+(circle yarıçap mod renk) → image?
+  yarıçap : (and/c real? (not/c negatıve?))
+  mod : mode?
+  renk : image-color?
 ```
 
 Verilen yarıçap, mod ve renk argümanlarını kullanarak bir daire oluşturur.
@@ -297,11 +297,11 @@ Renk isimleri için büyük/küçük harf farketmez. "black" ve "Black" aynı re
 ## rectangle
 
 ```racket
-(rectangle width height mode color) → image?
-  width : (and/c real? (not/c negatıve?))
-  height : (and/c real? (not/c negatıve?))
-  mode : mode?
-  color : image-color?
+(rectangle genişlik yükseklik mod renk) → image?
+  genişlik : (and/c real? (not/c negatıve?))
+  yükseklik : (and/c real? (not/c negatıve?))
+  mod : mode?
+  renk : image-color?
 ```
 
 Verilen genişlik, yükseklik, mod ve renk değerlerini kullanarak bir dikdörtgen oluşturur.
@@ -309,10 +309,10 @@ Verilen genişlik, yükseklik, mod ve renk değerlerini kullanarak bir dikdörtg
 ## star
 
 ```racket
-(star side-length mode color) → image?
-  side-length : (and/c real? (not/c negatıve?))
-  mode : mode?
-  color : image-color?
+(star kenar-uzunluğu mod renk) → image?
+  kenar-uzunluğu : (and/c real? (not/c negatıve?))
+  mod : mode?
+  renk : image-color?
 ```
 
 Beş noktalı bir yıldız oluşturur. Kenar uzunluğu argümanı, çevreleyen beşgenin kenar uzunluğunu belirler.
