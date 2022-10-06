@@ -148,7 +148,7 @@ Ya da resim kullanarak:
 (överlay (circle 30 "solid" "red") (rectangle 200 100 "outline" "black"))
 ```
 
-Bknz: [circle](#circle), [rectangle](#rectangle), [above](#above), [overlay](#overlay), [overlay/xy](#overlayxy)
+Bknz: [circle](../misc/documentation.md#circle), [rectangle](../misc/documentation.md#rectangle), [above](../misc/documentation.md#above), [overlay](../misc/documentation.md#overlay), [overlay/xy](../misc/documentation.md#overlayxy)
 
 ## İfadelerin İsimlendirilmesi: define
 
@@ -264,93 +264,6 @@ Peki bu ifadeyi içinde değişken olacak şekilde kullanmak istesek? Yani kulla
 ```racket
 (define fatura-hesapla
   (lambda (x)
-    (+ 10.16 (/ (* 17.45 350) 100))))
+    (+ 10.16 (/ (* 17.45 x) 100))))
 ```
 
-# Kaynaklar
-
-Bu dersi daha iyi anlayabilmek için aşağıdaki kaynaklardan faydalanabilirsiniz:
-
-- Kitap (Almanca): [Schreibe Dein Programm!](https://www.deinprogramm.de/sdp/) Sayfa 40'a kadar.
-- Video (Almanca): [DrRacket, REPL, Auswertung, Literale, komplexe Ausdrucke](https://www.youtube.com/watch?v=96QmmOUEduM)
-- Video (Almanca): [Spezialform define, İdentifier, Definitionsfenster](https://www.youtube.com/watch?v=_n6HZkiC3aM)
-- Video (Almanca): [Lambda-Abstraktion, Funktionsdefinition, Applikation](https://www.youtube.com/watch?v=vwdEO0hzTGg)
-
-
-# Notlar
-
-## circle
-
-```racket
-(circle yarıçap mod renk) → image?
-  yarıçap : (and/c real? (not/c negatıve?))
-  mod : mode?
-  renk : image-color?
-```
-
-Verilen yarıçap, mod ve renk argümanlarını kullanarak bir daire oluşturur.
-
-Mod, `solid` ya da `outline` değerlerinden biri olabilir.
-
-Renk isimleri için büyük/küçük harf farketmez. "black" ve "Black" aynı renktir. Ayrıca boşluk karakteri de önemsenmez. Yani "light red" ve "lightred" aynı renktir. Kullanabileceğiniz tüm renklerin listesi için [buraya](https://docs.racket-lang.org/draw/color-database___.html) bakabilirsiniz.
-
-## rectangle
-
-```racket
-(rectangle genişlik yükseklik mod renk) → image?
-  genişlik : (and/c real? (not/c negatıve?))
-  yükseklik : (and/c real? (not/c negatıve?))
-  mod : mode?
-  renk : image-color?
-```
-
-Verilen genişlik, yükseklik, mod ve renk değerlerini kullanarak bir dikdörtgen oluşturur.
-
-## star
-
-```racket
-(star kenar-uzunluğu mod renk) → image?
-  kenar-uzunluğu : (and/c real? (not/c negatıve?))
-  mod : mode?
-  renk : image-color?
-```
-
-Beş noktalı bir yıldız oluşturur. Kenar uzunluğu argümanı, çevreleyen beşgenin kenar uzunluğunu belirler.
-
-## above
-
-```racket
-(above i1 i2 is ...) → image?
-  i1 : image?
-  i2 : image?
-  is : image?
-```
-
-Verilen tüm resimleri merkezleri boyunca hizalanmış dikey bir sıraya yerleştirerek yeni bir resim oluşturur.
-
-## overlay
-
-```racket
-(overlay i1 i2 is ...) → image?
-  i1 : image?
-  i2 : image?
-  is : image?
-```
-
-Verilen tüm resimleri üst üste koyarak tek bir resim oluşturur. Birinci resim ikincinin üzerine, o da üçüncünün üzerine ... şeklinde devam eder. Tüm resimler orta noktalarından sabitlenir.
-
-## overlay/xy
-
-```racket
-overlay/xy i1 x y i2) → image?
-  i1 : image?
-  x : real?
-  y : real?
-  ı2 : image?
-```
-
-i1'i i2'nin üstüne yerleştirerek bir `image` oluşturur. Görüntüler başlangıçta sol üst köşelerinden sabitlenir ve ardından i2, x piksel sağa ve y piksel aşağı kaydırılır.
-
-# Ev Ödevi
-
-Racket dili tarafından tanımlanmış [circle](#circle), [rectangle](#rectangle), [start](#start), [overlay](#overlay) ve [overlay/xy](#overlayxy) gibi fonksiyonları kullanarak Türk Bayrağımızı çizebilir misiniz?
