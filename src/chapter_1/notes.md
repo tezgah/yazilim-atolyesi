@@ -1,4 +1,4 @@
-# Ders 1
+# Ders Notları
 
 ## DrRacket: Kurulum ve Ayarlar
 
