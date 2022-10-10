@@ -73,3 +73,9 @@
   (lambda (x)
      (overlay/xy roket (* -1 x) -100 arka-plan)))
 ```
+
+`Language > Add Teackpack` menüsünden `universe.ss` isimli eğitim paketini yüklerseniz (`Run` butonuna basmayı unutmayalım), yazdığınız `giden-roket` programını bir anımasyon haline getirebilirsiniz.
+
+```racket
+(animate giden-roket)
+```
