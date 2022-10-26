@@ -1,6 +1,6 @@
 # Ders Notları
 
-```scheme
+```racket
 ;; Açıklama
 ;; Verilen sayının karesini hesaplar
 
