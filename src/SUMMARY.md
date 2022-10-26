@@ -4,13 +4,13 @@
 
 # Dersler
 
-- [Ders 1](./chapter_1/README.md)
-  - [Ders Notları](./chapter_1/notes.md)
-  - [Ev Ödevi](./chapter_1/homework.md)
-  - [Kaynaklar](./chapter_1/resources.md)
-- [Ders 2](./chapter_2/README.md)
-  - [Ders Notları](./chapter_2/notes.md)
-  - [Ev Ödevi](./chapter_2/homework.md)
+- [Ders 1](./chapter-1/README.md)
+  - [Ders Notları](./chapter-1/notes.md)
+  - [Ev Ödevi](./chapter-1/homework.md)
+  - [Kaynaklar](./chapter-1/resources.md)
+- [Ders 2](./chapter-2/README.md)
+  - [Ders Notları](./chapter-2/notes.md)
+  - [Ev Ödevi](./chapter-2/homework.md)
 --------
 
 [Dökümentasyon](./misc/documentation.md)
