@@ -4,6 +4,8 @@
 ;; Bir sayı alır, verilen sayı 17'ye eşit ya da daha büyükse #t
 ;; değil ise #f döner
 
+(: ehliyet-alabilir (integer -> boolean))
+
 (check-expect (ehliyet-alabilir 1) #f)
 (check-expect (ehliyet-alabilir 16) #f)
 (check-expect (ehliyet-alabilir 17) #t)
@@ -17,7 +19,7 @@
 ```
 
 ```racket
-;; Verilen yaş değerine gönre hangi okula gitmesi gerektiğini söyler.
+;; Verilen yaş değerine göre hangi okula gidilmesi gerektiğini söyler.
 ;; < 0 -> "Okul yok"
 ;; 0 - 5 -> "Kindergarten"
 ;; 6 - 10 -> "Grundschule"
@@ -32,6 +34,8 @@
 (check-expect (hangi-okul 60) "Universitaet")
 (check-expect (hangi-okul 19) "Gymnasium")
 (check-expect (hangi-okul 20) "Universitaet")
+
+(: hangi-okul (integer -> string))
 
 (define hangi-okul
   (lambda (yaş)
