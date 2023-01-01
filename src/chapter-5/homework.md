@@ -10,7 +10,12 @@
 
 
 3. Bir nokta listesi alan ve listedeki noktaları toplayıp toplamı yeni bir nokta olarak dönen bir fonksiyon yazalım. (Hatırlatma: İki noktanın toplamı x ve y koordinatlarının ayrı ayrı toplanması ile elde edilir. (x1, y1) + (x2, y2) = (x1 + x2, y1 + y2).
-  
+  Örnekler:
+  - [] - (0, 0)
+  - [(1, 4)] -> (1, 4)
+  - [(1, 3), (3, 6)] -> (4, 9)
+
+
 ```sh
 (define-record-procedures nokta
   make-nokta
