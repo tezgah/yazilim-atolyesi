@@ -22,4 +22,4 @@
   - [Ev Ödevi](./chapter-5/homework.md)
 --------
 
-[Dökümentasyon](./misc/documentation.md)
+[Dokümantasyon](./misc/documentation.md)
