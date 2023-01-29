@@ -1,5 +1,7 @@
 # Ders Notları
 
+İlk dersimizde `+`, `odd?`, `string-append`, `circle` gibi daha önceden tanımlanmış fonksiyonları kullanarak bazı işler yapmaya çalıştık. Ancak henüz kendimiz bir fonksiyon tanımlamadık. Bu dersimizde `lambda` ifadesini kullanarak bir değişken alabilen fonksiyonların nasıl tanımlandığını öğreneceğiz.
+
 ## Fonksiyonlar (Prosedürler): lambda
 
 Şimdi birlikte elektrik faturamızı hesaplayabilmek için bir formül yazalım. Benim kullandığım elektrik şirketinin fiyatlandırma kuralı şu şekilde:
