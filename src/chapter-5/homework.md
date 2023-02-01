@@ -23,3 +23,11 @@
   (nokta-x
    nokta-y))
 ```
+
+4. Bir `boolean` listesi alan ve eğer tüm değerler `#t` ise `#t`, herhangi bir değer `#f` ise `#f` dönen bir fonksiyon yazalım.
+  Örnekler:
+  - [] -> #t
+  - [#t] -> #t
+  - [#f] -> #f
+  - [#t, #t] -> #t
+  - [#t, #f] -> #f
