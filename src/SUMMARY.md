@@ -23,6 +23,9 @@
 - [Ders 6](./chapter-6/README.md)
   - [Ders Notları](./chapter-6/notes.md)
   - [Ev Ödevi](./chapter-6/homework.md)
+- [Ders 7](./chapter-7/README.md)
+  - [Ders Notları](./chapter-7/notes.md)
+  - [Ev Ödevi](./chapter-7/homework.md)
 --------
 
 [Dokümantasyon](./misc/documentation.md)
