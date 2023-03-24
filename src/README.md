@@ -29,10 +29,17 @@ Ders süresince aşağıdaki materyal ve kaynaklardan faydalanıyor olacağız. 
 
 - Programlama dili: [Racket](https://racket-lang.org/)
 - Geliştirme ortamı: [DrRacket](https://download.racket-lang.org/)
+
+### Almanca
+
 - Kitap: [Schreibe Dein Programm!](https://www.deinprogramm.de/sdp/)
 - Eğitim videoları: [Informatik I - Database Systems Research Group at U Tübingen](https://www.youtube.com/playlist?list=PL1XF9qjV8kH11R-SRa0g8SaB0DOUhxH5p)
-- Racket dokümantasyonu: [Dokümantasyon](https://docs.racket-lang.org/)
-- Almanca dökümantasyon: [Sprachebenen und Material zu Schreibe Dein Programm!](https://docs.racket-lang.org/deinprogramm/index.html)
+- Racket dökümantasyon: [Sprachebenen und Material zu Schreibe Dein Programm!](https://docs.racket-lang.org/deinprogramm/index.html)
+
+### İngilizce
+
+- Kitap: [How to Design Programs](https://htdp.org/)
+- Racket dokümantasyon: [Racket Documentation](https://docs.racket-lang.org/)
 
 
 [//]: # (TODO: Katılımcıların çoğunluğun ingilizce bilmiyor. Türkçe ve Almanca konuşuyorlar.)
