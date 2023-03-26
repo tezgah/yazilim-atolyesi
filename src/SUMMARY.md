@@ -35,3 +35,4 @@
 --------
 
 [Dokümantasyon](./misc/documentation.md)
+[İletişim](./misc/contact.md)
