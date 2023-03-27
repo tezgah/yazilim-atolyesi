@@ -115,8 +115,6 @@
 (check-expect (ilerle (yılan-oluştur (cons (koor-oluştur 100 100) empty) "sağ" 0 0)) (yılan-oluştur (cons (koor-oluştur 110 100) empty) "sağ" 0 0))
 (check-expect (ilerle (yılan-oluştur (cons (koor-oluştur 100 100) (cons (koor-oluştur 90 100) empty)) "sağ" 0 0)) (yılan-oluştur (cons (koor-oluştur 110 100) (cons (koor-oluştur 100 100) empty)) "sağ" 0 0))
 
-```
-```
 (define ilerle
   (lambda (yln)
     (cond
@@ -126,8 +124,9 @@
       [(string=? (yılan-yön yln) "yukarı") (yılan-oluştur (cons (koor-oluştur (koor-x (first (yılan-gövde yln)))  (- (koor-y (first (yılan-gövde yln))) 10)) (son-elemanı-sil (yılan-gövde yln))) (yılan-yön yln) (yem-x yln) (yem-y yln))]
       [(string=? (yılan-yön yln) "aşağı") (yılan-oluştur (cons (koor-oluştur (koor-x (first (yılan-gövde yln)))  (+ (koor-y (first (yılan-gövde yln))) 10)) (son-elemanı-sil (yılan-gövde yln))) (yılan-yön yln) (yem-x yln) (yem-y yln))]
       [else yln])))
+```
 
-
+```
 ;; Bir yılanın alır ve koordinatlarını kontrol eder. Eger yılan sahnenin dışına çıktı ise #true döner. Aksi takdirde #false döner.
 
 (: oyun-bitti? (yılan -> boolean))
@@ -145,8 +144,9 @@
       [(< (koor-y (first (yılan-gövde yln))) 5) #t]
       [(> (koor-y (first (yılan-gövde yln))) 195) #t]
       [else #f])))
+```
 
-
+```
 ;; Bir yılan alır ve oyunun son sahnesini gösteren bir resim döner.
 
 (: son-sahne (yılan -> image))
@@ -156,15 +156,17 @@
 (define son-sahne
   (lambda (yln)
     (place-image (text "Oyun Bitti!" 30 "red") 100 100 (empty-scene 200 200))))
+```
 
-
+```
 ;; 5,15,25...195 sayılarından birini rastgele olarak seçer ve döner.
 
 (: rastgele integer)
 
 (define rastgele (+ 5 (* (random 20) 10)))
+```
 
-
+```
 ;; Yılanı (50,100) noktasından yönü sağ tarafa doğru olacak sekilde yerleştirerek simulasyonu başlatır.
 
 (big-bang
