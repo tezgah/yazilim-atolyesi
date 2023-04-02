@@ -21,7 +21,7 @@ Aşağıda maddeler halinde sıraladığımız konular Yazılım Atölyesi'nin a
 
 ## Dersler
 
-Derslerimiz Pazartesi günleri saat 19:00'da, Online olarak yapılmaktadır. Derse davet bağlantısı dersten önce whatsapp grubundan paylaşılmaktadır.
+Derslerimiz Pazar günleri Almanya saati ile 14:00'da, Türkiye saati ile 15:00'da online olarak yapılmaktadır. Derse davet bağlantısı dersten önce whatsapp grubundan paylaşılmaktadır. Henüz gruba ekli değilseniz iletişim sayfamızdaki bilgileri kullanarak bize ulaşabilirsiniz.
 
 ## Kaynaklar & Materyaller
 
