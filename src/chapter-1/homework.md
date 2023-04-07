@@ -1,8 +1,13 @@
 # Ev Ödevi
 
-1. Racket dili tarafından tanımlanmış [circle](../misc/documentation.md#circle), [rectangle](../misc/documentation.md#rectangle), [star](../misc/documentation.md#star), [overlay](../misc/documentation.md#overlay) ve [overlay/xy](../misc/documentation.md#overlayxy) gibi fonksiyonları kullanarak Türk Bayrağımızı çizebilir misiniz?
+1. Aşağıdaki matematiksel ifadeleri Racket dilinde yazarak çalıştıralım:
+   1. 42 * 6
+   2. 23 + (42 / 7)
+   3. (12 * 5) + (4 * (22 + 17))
 
-2. Derste yaptığımız Alman Bayrağı'nın gerçek oranı 3/5'tır. Yani genişliği 5 birim ise yüksekliği 3 birimdir. Dolayısı ile her bir rengi oluşturan dikdörtgenlerin yükseklikleri 1'er birimdir. Öyle bir Alman Bayrağı yapalım ki `genişlik` değerini kaç verirsek geri kalan ölçüleri ona göre ayarlasın ve böylece istediğimiz boyutta bir bayrak çizebilelim.
+2. Racket dili tarafından tanımlanmış [circle](../misc/documentation.md#circle), [rectangle](../misc/documentation.md#rectangle), [star](../misc/documentation.md#star), [overlay](../misc/documentation.md#overlay) ve [overlay/xy](../misc/documentation.md#overlayxy) gibi fonksiyonları kullanarak Türk Bayrağımızı çizebilir misiniz?
+
+3. Derste yaptığımız Alman Bayrağı'nın gerçek oranı 3/5'tır. Yani genişliği 5 birim ise yüksekliği 3 birimdir. Dolayısı ile her bir rengi oluşturan dikdörtgenlerin yükseklikleri 1'er birimdir. Öyle bir Alman Bayrağı yapalım ki `genişlik` değerini kaç verirsek geri kalan ölçüleri ona göre ayarlasın ve böylece istediğimiz boyutta bir bayrak çizebilelim.
 
 Örnek:
 
@@ -20,6 +25,6 @@ Eğer genişlik değerini 600 olarak tanımlarsak, bayrağın yüksekliği 200, 
 
 Bu şekilde genişlik değeri değiştikçe boyutu değişen (ancak oranları sabit olan) bir Alman Bayrağı çizebilir misin?
 
-3. İkinci ödevde yaptığımız gibi aynı şekilde genişlik değiştikçe boyutu değişen, ancak oranları bozulmayan bir Türk bayrağı çizebilir misin? Wikipedia sitesindeki Türk Bayrağı'nun boyutları ile ilgili yeterli bilgiyi bulabilirsin.
+4. İkinci ödevde yaptığımız gibi aynı şekilde genişlik değiştikçe boyutu değişen, ancak oranları bozulmayan bir Türk bayrağı çizebilir misin? Wikipedia sitesindeki Türk Bayrağı'nun boyutları ile ilgili yeterli bilgiyi bulabilirsin.
 
-https://tr.wikipedia.org/wiki/T%C3%BCrk_bayra%C4%9F%C4%B1
+[Wikipedia: Türk Bayrağı](https://tr.wikipedia.org/wiki/T%C3%BCrk_bayra%C4%9F%C4%B1)
