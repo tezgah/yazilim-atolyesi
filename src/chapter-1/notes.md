@@ -1,5 +1,9 @@
 # Ders Notları
 
+## Ders Videosu
+
+<a href="https://www.youtube.com/watch?v=NsfSTQ6MOtY" target="_blank"><img src="ders1.png"></a>
+
 ## DrRacket: Kurulum ve Ayarlar
 
 İlk olarak aşağıdaki bağlantıyı kullanarak `DrRacket` programını indirelim, kuralım ve ayarlarını yapalım:
@@ -24,6 +28,8 @@ Language > Add Teachpack > Image2.ss
 ```
 
 Dil ve eğitim paketi seçtikten sonra `Run` tuşuna basarak yaptığımız değişiklikleri kullanıma alalım.
+
+![Dil ve Eğitim Paketi Ayarları](drracket_lang_teachpack.png) 
 
 DrRacket 2 ayrı pencereden oluşur. Bunlar `Definition Window` (Tanımlama Penceresi) ve `Interaktion Window` (Etkileşim Penceresi) olarak adlandırılır.
 
