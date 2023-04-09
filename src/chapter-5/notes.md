@@ -1,80 +1,73 @@
 # Ders Notları
 
 ```racket
-;; sayi-listesi
-;; - empty
-;; - (cons sayi sayi-listesi)
+(define-record-procedures ogrenci
+  make-ogrenci
+  ogrenci?
+  (ogrenci-adi
+   ogrenci-soyadi))
+
+(define ben (make-ogrenci "fatih" "koksal"))
+(define sen (make-ogrenci "ali" "kurnaz"))
+
+;; Açıklama
+;; Bir öğrenci alır ve onun tam adını döner
+
+;; Sozlesme
+(: tam-adi (ogrenci -> string))
+
+;; Testler
+(check-expect (tam-adi ben) "fatih koksal")
+(check-expect (tam-adi sen) "ali kurnaz")
+(check-expect (tam-adi (make-ogrenci "yusuf islam" "dagdelen")) "yusuf islam dagdelen")
+
+;; Kod
+(define tam-adi
+  (lambda (ogrenci)
+    (string-append (ogrenci-adi ogrenci) " " (ogrenci-soyadi ogrenci))))
 ```
 
 ```racket
-;; Bir sayı-listesi alır ve bu sayıları 2 ile çarparak yeni bir sayı listesi döner
-;; [] -> []
-;; [1] -> [2]
-;; [3, 7] -> [6, 14]
+(define-record-procedures nokta
+  make-nokta
+  nokta?
+  (nokta-x
+   nokta-y))
 
-;; (: liste-carpi-2 (sayi-listesi -> sayi-listesi))
+;; İki nokta alır ve birbirleri ile toplayarak yeni bir nokta döner
+;; İki noktanın toplamı x ve y koordinatlarının toplamına eşittir
 
-(check-expect (liste-carpi-2 empty) empty)
-(check-expect (liste-carpi-2 (cons 1 empty)) (cons 2 empty))
-(check-expect (liste-carpi-2 (cons 3 (cons 7 empty))) (cons 6 (cons 14 empty)))
-(check-expect (liste-carpi-2 (cons 2 (cons 8 (cons 21 empty)))) (cons 4 (cons 16 (cons 42 empty))))
+(: iki-nokta-toplami (nokta nokta -> nokta))
 
-(define liste-carpi-2
-  (lambda (lst)
-    (cond
-      ((empty? lst) empty)
-      (else (cons (* 2 (first lst)) (liste-carpi-2 (rest lst)))))))
+(check-expect (iki-nokta-toplami (make-nokta 1 1) (make-nokta 2 2)) (make-nokta 3 3))
+(check-expect (iki-nokta-toplami (make-nokta 0 4) (make-nokta 1 3)) (make-nokta 1 7))
+
+(define iki-nokta-toplami
+  (lambda (n1 n2)
+      (make-nokta (+ (nokta-x n1) (nokta-x n2)) (+ (nokta-y n1) (nokta-y n2)))))
 ```
 
 ```racket
-;; Bir sayı listesi alır ve her bir elemanın karesini hesaplayarak yeni bir liste döner.
-;; empty -> empty
-;; [1] -> [1](cons 1 (cons 2 empty))
-;; [1, 2] -> [1, 4]
-;; [2, 3, 5] -> [4, 9, 25]
+(define-record-procedures nokta
+  make-nokta
+  nokta?
+  (nokta-x
+   nokta-y))
 
-;; ( : liste-karesi (sayi-listesi -> sayi-listesi))
+;; Koordinat duzlemi uzerinde 2 nokta alir ve aralarindaki uzakligi hesaplar
 
-(check-expect (liste-karesi empty) empty)
-(check-expect (liste-karesi (cons 1 empty)) (cons 1 empty))
-(check-expect (liste-karesi (cons 1 (cons 2 empty))) (cons 1 (cons 4 empty)))
-(check-expect (liste-karesi (cons 2 (cons 3 (cons 5 empty)))) (cons 4 (cons 9 (cons 25 empty))))
+(: iki-nokta-arasindaki-uzaklik (nokta nokta -> rational))
 
-(define liste-karesi
-  (lambda (lst)
-    (cond
-      ((empty? lst) empty)
-      (else (cons (karesi (first lst)) (liste-karesi (rest lst)))))))
+(check-expect (iki-nokta-arasindaki-uzaklik (make-nokta 4 0) (make-nokta 0 3)) 5)
+(check-expect (iki-nokta-arasindaki-uzaklik (make-nokta 0 0) (make-nokta 3 0)) 3)
+(check-expect (iki-nokta-arasindaki-uzaklik (make-nokta 0 0) (make-nokta 0 2)) 2)
+(check-within (iki-nokta-arasindaki-uzaklik (make-nokta 5 0) (make-nokta 0 3)) (sqrt 34) 0.0000001)
 
+(define iki-nokta-arasindaki-uzaklik
+  (lambda (n1 n2)
+    (sqrt (+ (karesi (- (nokta-y n2) (nokta-y n1))) (karesi (- (nokta-x n2) (nokta-x n1)))))))
 
 (define karesi
   (lambda (x)
-    (* x x )))
-```
-
-```racket
-;; string-listesi
-;; - empty
-;; - (cons string string-listesi)
-```
-
-```racket
-;; Bir string listesi alır ve liste içerisindeki tüm stringleri ard arda ekler.
-;; empty -> ""
-;; ["fatih"] -> "fatih"
-;; ["fatih", "koksal"] -> "fatih koksal"
-;; ["mehmet", "fatih", "koksal"] -> "mehmet fatih koksal"
-
-;; (: liste-birlestir (string-listesi -> string))
-
-(check-expect (liste-birlestir empty) "")
-(check-expect (liste-birlestir (cons "fatih" empty)) "fatih ")
-(check-expect (liste-birlestir (cons "fatih" (cons "koksal" empty))) "fatih koksal ")
-(check-expect (liste-birlestir (cons "mehmet" (cons "fatih" (cons "koksal" empty)))) "mehmet fatih koksal ")
-
-(define liste-birlestir
-  (lambda (lst)
-    (cond
-      ((empty? lst) "")
-      (else (string-append (first lst) " " (liste-birlestir (rest lst)))))))
+    (* x x)))
 ```

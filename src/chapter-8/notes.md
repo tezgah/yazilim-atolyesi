@@ -1,90 +1,62 @@
 # Ders Notları
 
 ```
-(define-record-procedures yılan
-  yılan-oluştur
-  (yılan-x
-   yılan-y
-   yılan-yön))
-
-(yılan-oluştur 0 0 "sağ")
-(yılan-oluştur 100 50 "sol")
-(yılan-oluştur 80 210 "yukarı")
-(yılan-oluştur 0 75 "aşağı")
+(define-record-procedures top
+  make-top
+  top?
+  (top-x
+   top-y))
 ```
-
 ```
-;; Bir yılan ve klavyeden basılan tuşu berlirten bir string alır. Eğer basılan tuş yön tuşlarından
-;; biri ise yılanın yönünü uygun bir şekilde değiştirir:
-;; "up" -> "yukarı"
-;; "down" -> "aşağı"
-;; "left" -> "sol"
-;; "right" -> "sağ"
+(: change (top string -> top))
 
-(: yön-değiştir (yılan string -> yılan))
+(check-expect (change (make-top 100 100) "left") (make-top 90 100))
+(check-expect (change (make-top 100 100) "right") (make-top 110 100))
+(check-expect (change (make-top 100 100) "up") (make-top 100 90))
+(check-expect (change (make-top 100 100) "down") (make-top 100 110))
+(check-expect (change (make-top 0 200) "r") (make-top 100 100))
 
-(check-expect (yön-değiştir (yılan-oluştur 0 0 "sağ") "up")  (yılan-oluştur 0 0 "yukarı"))
-(check-expect (yön-değiştir (yılan-oluştur 100 50 "yukarı") "left")  (yılan-oluştur 100 50 "sol"))
-(check-expect (yön-değiştir (yılan-oluştur 80 20 "sol") "down")  (yılan-oluştur 80 20 "aşağı"))
-(check-expect (yön-değiştir (yılan-oluştur 10 90 "aşağı") "right")  (yılan-oluştur 10 90 "sağ"))
-(check-expect (yön-değiştir (yılan-oluştur 10 90 "aşağı") "up")  (yılan-oluştur 10 90 "aşağı"))
-(check-expect (yön-değiştir (yılan-oluştur 10 90 "yukarı") "down")  (yılan-oluştur 10 90 "yukarı"))
-(check-expect (yön-değiştir (yılan-oluştur 10 90 "sol") "right")  (yılan-oluştur 10 90 "sol"))
-(check-expect (yön-değiştir (yılan-oluştur 10 90 "sağ") "left")  (yılan-oluştur 10 90 "sağ"))
+(define change
+  (lambda (t a-key)
+  (cond
+    [(key=? a-key "left")  (make-top (- (top-x t) 10) (top-y t))]
+    [(key=? a-key "right") (make-top (+ (top-x t) 10) (top-y t))]
+    [(key=? a-key "up")    (make-top (top-x t) (- (top-y t) 10))]
+    [(key=? a-key "down")  (make-top (top-x t) (+ (top-y t) 10))]
+    [(key=? a-key "r")  (make-top 100 100)]
+    [else t])))
+```
+```
+(: jump (top integer integer string -> top))
 
-(define yön-değiştir
-  (lambda (yln tuş)
+(check-expect (jump (make-top 100 100) 50 60 "drag") (make-top 50 60))
+(check-expect (jump (make-top 100 100) 50 60 "move") (make-top 100 100))
+(check-expect (jump (make-top 100 100) 50 60 "button-up") (make-top 100 100))
+(check-expect (jump (make-top 100 100) 50 60 "button-down") (make-top 50 60))
+
+(define jump
+  (lambda (t x y m-event)
     (cond
-      [(and (key=? tuş "left") (not (string=? (yılan-yön yln) "sağ"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "sol")]
-      [(and (key=? tuş "right") (not (string=? (yılan-yön yln) "sol"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "sağ")]
-      [(and (key=? tuş "up") (not (string=? (yılan-yön yln) "aşağı"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "yukarı")]
-      [(and (key=? tuş "down") (not (string=? (yılan-yön yln) "yukarı"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "aşağı")]
-      [(key=? tuş "r") (yılan-oluştur 50 50 "sağ")]
-      [else yln])))
+      [(mouse=? m-event "drag") (make-top x y)]
+      [(mouse=? m-event "button-down") (make-top x y)] 
+      [else t])))
 ```
-
 ```
-;; Bir yılan alır ve 200x200 boyutlarında boş bir sahneye yılanın x ve y koordinatlarına gelecek sekilde
-;; 10x10 boyutlarında siyah içi dolu bir kare çizer.
+(: draw (top -> image))
 
-(: çiz (yılan -> image))
+(check-expect (draw (make-top 100 100)) (place-image (circle 10 "solid" "red") 100 100 (empty-scene 200 200)))
 
-(check-expect (çiz (yılan-oluştur 100 100 "sol")) (place-image (rectangle 10 10 "solid" "black") 100 100 (empty-scene 200 200)))
-
-(define çiz
-  (lambda (yln)
+(define draw
+  (lambda (t)
     (place-image 
-     (rectangle 10 10 "solid" "black")
-     (yılan-x  yln) (yılan-y yln)
+     (circle 10 "solid" "red")
+     (top-x t) (top-y t)
      (empty-scene 200 200))))
 ```
-
 ```
-;; Bir yılan alır ve yılanın yönüne uygun bir şekilde bir sonraki sahnede nerede olması gerektiğini hesaplar.
-;; Bu hesap sonucunda oluşan yeni yılanı döner.
-
-(: ilerle (yılan -> yılan))
-
-(check-expect (ilerle (yılan-oluştur 100 100 "sağ")) (yılan-oluştur 105 100 "sağ"))
-(check-expect (ilerle (yılan-oluştur 100 100 "sol")) (yılan-oluştur 95 100 "sol"))
-(check-expect (ilerle (yılan-oluştur 100 100 "yukarı")) (yılan-oluştur 100 95 "yukarı"))
-(check-expect (ilerle (yılan-oluştur 100 100 "aşağı")) (yılan-oluştur 100 105 "aşağı"))
-
-(define ilerle
-  (lambda (yln)
-    (cond
-      [(string=? (yılan-yön yln) "sağ") (yılan-oluştur (+ (yılan-x yln) 5) (yılan-y yln) (yılan-yön yln))]
-      [(string=? (yılan-yön yln) "sol") (yılan-oluştur (- (yılan-x yln) 5) (yılan-y yln) (yılan-yön yln))]
-      [(string=? (yılan-yön yln) "yukarı") (yılan-oluştur (yılan-x yln) (- (yılan-y yln) 5) (yılan-yön yln))]
-      [(string=? (yılan-yön yln) "aşağı") (yılan-oluştur (yılan-x yln) (+ (yılan-y yln) 5) (yılan-yön yln))]
-      [else yln])))
-```
-
-```
-;; Yılanı (50,100) noktasından yönü sağ tarafa doğru olacak sekilde yerleştirerek simulasyonu başlatır.
 (big-bang
-    (yılan-oluştur 50 100 "sağ")
-  (on-key yön-değiştir)
-  (on-tick ilerle)
-  (to-draw çiz 200 200))
+    (make-top 100 100)
+  (on-key change)
+  (on-mouse jump)
+  (to-draw draw 200 200))
 ```

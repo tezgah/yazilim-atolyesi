@@ -1,73 +1,104 @@
 # Ders Notları
 
 ```racket
-(define-record-procedures ogrenci
-  make-ogrenci
-  ogrenci?
-  (ogrenci-adi
-   ogrenci-soyadi))
+;; Bir sayı alır, verilen sayı 17'ye eşit ya da daha büyükse #t
+;; değil ise #f döner
 
-(define ben (make-ogrenci "fatih" "koksal"))
-(define sen (make-ogrenci "ali" "kurnaz"))
+(: ehliyet-alabilir (integer -> boolean))
 
-;; Açıklama
-;; Bir öğrenci alır ve onun tam adını döner
+(check-expect (ehliyet-alabilir 1) #f)
+(check-expect (ehliyet-alabilir 16) #f)
+(check-expect (ehliyet-alabilir 17) #t)
+(check-expect (ehliyet-alabilir 39) #t)
 
-;; Sozlesme
-(: tam-adi (ogrenci -> string))
-
-;; Testler
-(check-expect (tam-adi ben) "fatih koksal")
-(check-expect (tam-adi sen) "ali kurnaz")
-(check-expect (tam-adi (make-ogrenci "yusuf islam" "dagdelen")) "yusuf islam dagdelen")
-
-;; Kod
-(define tam-adi
-  (lambda (ogrenci)
-    (string-append (ogrenci-adi ogrenci) " " (ogrenci-soyadi ogrenci))))
+(define ehliyet-alabilir
+  (lambda (yaş)
+    (cond
+      [(< yaş 17) #f]
+      [else #t])))
 ```
 
 ```racket
-(define-record-procedures nokta
-  make-nokta
-  nokta?
-  (nokta-x
-   nokta-y))
+;; Verilen yaş değerine göre hangi okula gidilmesi gerektiğini söyler.
+;; < 0 -> "Okul yok"
+;; 0 - 5 -> "Kindergarten"
+;; 6 - 10 -> "Grundschule"
+;; 11 - 19 -> "Gymnasium"
+;; 20 -> ... -> "Universitaet"
 
-;; İki nokta alır ve birbirleri ile toplayarak yeni bir nokta döner
-;; İki noktanın toplamı x ve y koordinatlarının toplamına eşittir
+(check-expect (hangi-okul 5) "Kindergarten")
+(check-expect (hangi-okul 6) "Grundschule")
+(check-expect (hangi-okul 10) "Grundschule")
+(check-expect (hangi-okul 11) "Gymnasium")
+(check-expect (hangi-okul 14) "Gymnasium")
+(check-expect (hangi-okul 60) "Universitaet")
+(check-expect (hangi-okul 19) "Gymnasium")
+(check-expect (hangi-okul 20) "Universitaet")
 
-(: iki-nokta-toplami (nokta nokta -> nokta))
+(: hangi-okul (integer -> string))
 
-(check-expect (iki-nokta-toplami (make-nokta 1 1) (make-nokta 2 2)) (make-nokta 3 3))
-(check-expect (iki-nokta-toplami (make-nokta 0 4) (make-nokta 1 3)) (make-nokta 1 7))
-
-(define iki-nokta-toplami
-  (lambda (n1 n2)
-      (make-nokta (+ (nokta-x n1) (nokta-x n2)) (+ (nokta-y n1) (nokta-y n2)))))
+(define hangi-okul
+  (lambda (yaş)
+    (cond
+      [(<= yaş 0) "Okul yok"]
+      [(<= yaş 5) "Kindergarten"]
+      [(and (>= yaş 6) (<= yaş 10)) "Grundschule"]
+      [(and (>= yaş 11) (<= yaş 19)) "Gymnasium"]
+      [else "Universitaet"])))
 ```
 
 ```racket
-(define-record-procedures nokta
-  make-nokta
-  nokta?
-  (nokta-x
-   nokta-y))
+;; Bir sayı alır ve trafik lambası resmi üretir.
+;; Verilen sayı;
+;; 10'a eşit ya da daha küçükse kırmızı ışık,
+;; 12'ye eşit ya da daha küçükse sarı ışık,
+;; 17'ye eşit ya da dağa küçükse yeşik ışık,
+;; 19'a eşit ya da daha küçükse sarı ışık,
+;; 19'dan daha sonra da kırmızı ışık yanıyormuş gibi gösterir.
 
-;; Koordinat duzlemi uzerinde 2 nokta alir ve aralarindaki uzakligi hesaplar
+(: trafik-lambasi-sn (rational -> image))
 
-(: iki-nokta-arasindaki-uzaklik (nokta nokta -> rational))
+(check-expect (trafik-lambasi-sn 1) kirmizi-isik)
+(check-expect (trafik-lambasi-sn 9) kirmizi-isik)
+(check-expect (trafik-lambasi-sn 10) kirmizi-isik)
+(check-expect (trafik-lambasi-sn 11) sari-isik)
+(check-expect (trafik-lambasi-sn 12) sari-isik)
+(check-expect (trafik-lambasi-sn 13) yesil-isik)
+(check-expect (trafik-lambasi-sn 17) yesil-isik)
+(check-expect (trafik-lambasi-sn 18) sari-isik)
+(check-expect (trafik-lambasi-sn 19) sari-isik)
+(check-expect (trafik-lambasi-sn 20) kirmizi-isik)
+(check-expect (trafik-lambasi-sn 180) kirmizi-isik)
 
-(check-expect (iki-nokta-arasindaki-uzaklik (make-nokta 4 0) (make-nokta 0 3)) 5)
-(check-expect (iki-nokta-arasindaki-uzaklik (make-nokta 0 0) (make-nokta 3 0)) 3)
-(check-expect (iki-nokta-arasindaki-uzaklik (make-nokta 0 0) (make-nokta 0 2)) 2)
-(check-within (iki-nokta-arasindaki-uzaklik (make-nokta 5 0) (make-nokta 0 3)) (sqrt 34) 0.0000001)
+(define kirmizi (circle 40 "solid" "red"))
+(define sari (circle 40 "solid" "yellow"))
+(define yesil (circle 40 "solid" "green"))
+(define gri (circle 40 "solid" "grey"))
+(define lamba (rectangle 100 260 "solid" "black"))
+(define kirmizi-isik (overlay (above kirmizi gri gri) lamba))
+(define sari-isik (overlay (above gri sari gri) lamba))
+(define yesil-isik (overlay (above gri gri yesil) lamba))
 
-(define iki-nokta-arasindaki-uzaklik
-  (lambda (n1 n2)
-    (sqrt (+ (karesi (- (nokta-y n2) (nokta-y n1))) (karesi (- (nokta-x n2) (nokta-x n1)))))))
+(define trafik-lambasi-sn
+  (lambda (sn)
+    (cond
+      ((<= sn 10) kirmizi-isik)
+      ((<= sn 12) sari-isik)
+      ((<= sn 17) yesil-isik)
+      ((<= sn 19) sari-isik)
+      (else kirmizi-isik))))
 
-(define karesi
-  (lambda (x)
-    (* x x)))
+
+;; Bir sayı alır ve bu sayıyı 28'e bölerek trafik-lambasi-sn fonksiyonunu çağırarak bir resim üretir.
+;; animate fonksiyonu her saniyede 28 kare resim gösterdiği için böyle bir yöntem kullanıyoruz.
+
+(: trafik-lambasi (integer -> image))
+
+(check-expect (trafik-lambasi 0) kirmizi-isik)
+(check-expect (trafik-lambasi 1) kirmizi-isik)
+(check-expect (trafik-lambasi 308) sari-isik)
+
+(define trafik-lambasi
+  (lambda (sn)
+    (trafik-lambasi-sn (/ sn 28))))
 ```

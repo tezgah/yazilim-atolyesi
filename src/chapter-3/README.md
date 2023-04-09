@@ -1,5 +1,5 @@
-# Ders 3
+# Ders 2
 
-Bu dersimizde koşul ifadelerini (conditionals) kullanarak programımıza nasıl yön verebileceğimizi öğreneceğiz.
+Bu dersimizde problem çözerken bize yardımcı olan `Tasarım Reçetesi`'ni öğrenecek ve onu kullanarak yeni fonksiyonlar tanımlayacağız.
 
 Haydi başlayalım...

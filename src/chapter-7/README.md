@@ -1,5 +1,5 @@
-# Ders 7
+# Ders 6
 
-Bu dersimizde `big-bang` ile yaptığımız animasyonları klavye ve mouse kullanarak interaktif bir hale getireceğiz.
+Bu dersimizde basit animasyonlar üretmek için kullandığımız `animate` fonksiyonunu hatırlattıktan sonra daha gelişmiş animasyonlar üretmemizi sağlayacak `big-bang` fonksiyonunu öğreneceğiz.
 
 Haydi başlayalım...

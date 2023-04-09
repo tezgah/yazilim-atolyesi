@@ -1,5 +1,5 @@
-# Ders 4
+# Ders 3
 
-Bu dersimizde `define-record-procedures` fonksiyonunu kullanarak yeni veri yapıları üretmeyi öğreneceğiz.
+Bu dersimizde koşul ifadelerini (conditionals) kullanarak programımıza nasıl yön verebileceğimizi öğreneceğiz.
 
 Haydi başlayalım...

@@ -1,5 +1,5 @@
-# Ders 8
+# Ders 7
 
-Bu dersimizde yılan oyununu yazmak için ilk adımlarımızı atacağız. Basit bir veri yapısı ile başlayarak klavye ile yönünü tayin edebildiğimiz küçük bir böcek animasyonu yapacağız.
+Bu dersimizde `big-bang` ile yaptığımız animasyonları klavye ve mouse kullanarak interaktif bir hale getireceğiz.
 
 Haydi başlayalım...

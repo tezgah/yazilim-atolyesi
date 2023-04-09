@@ -1,149 +1,80 @@
 # Ders Notları
 
-## animate
-
-Hatırlayacak olursanız `animate` zaman bazlı similasyonlar üretebileceğimiz basit bir animasyon fonksiyonu. Programcının görevi verilen her bir doğal sayı için `image` üretecek fonksiyonu sağlamak. Bu fonksiyonu `animate` fonksiyonuna veridiğimizde bize similasyonu gösteriyor. İmzası şu şekilde:
-
-```
-; (: animate ((natural -> image) -> natural))
+```racket
+;; sayi-listesi
+;; - empty
+;; - (cons sayi sayi-listesi)
 ```
 
-`animate` fonksiyonu bir tuval açar ve saniyede 28 kez işleyen bir saat başlatır. Saatin her vuruşunda DrRacket fonksiyonun çağırımından o zamana kadar geçen vuruş sayısını resmi çizecek olan fonksiyona uygular. Üretilen her bir resmi tuvalde tek tek gösterir. Saniyede 28 kere olan bu işlem çok hızlı olduğundan biz oluşan resimleri sanki bir anımasyon gibi görürüz. Similasyon siz açılan pencereyi kapatana kadar devam eder ve geri dönüş değeri olarak o zamana kadar geçen vuruş sayısını doğal sayı olarak geri döner.
+```racket
+;; Bir sayı-listesi alır ve bu sayıları 2 ile çarparak yeni bir sayı listesi döner
+;; [] -> []
+;; [1] -> [2]
+;; [3, 7] -> [6, 14]
 
-Burada dikkatimizi ilk çeken şu olmalı. `animate` fonksiyonu başka bir fonksiyonu parametre olarak alıyor. Bu daha önce kullandığımız fonksiyonların imzalarına pek benzemiyor. Normalde fonksiyonlar `string`, `natural`, `number`, `boolean` ya da `image` gibi basit veri yapılarını parametre olarak alırlar. Ama burada da gördüğümüz üzere başka fonksiyonları parametre olarak kabul eden fonksiyonlar da var. `animate` fonksiyonunu imzasından da görülebileceği gibi öyle herhangi bir fonksiyonu parametre olarak kabul etmiyor. `natural` alan ve `image` ureten bir fonksiyon olmalı.
+;; (: liste-carpi-2 (sayi-listesi -> sayi-listesi))
 
-İlk olarak `animate` fonksiyonunun nasıl çalıştığını anlamamıza da yardımcı olacak basit bir örnekle başlayalım:
+(check-expect (liste-carpi-2 empty) empty)
+(check-expect (liste-carpi-2 (cons 1 empty)) (cons 2 empty))
+(check-expect (liste-carpi-2 (cons 3 (cons 7 empty))) (cons 6 (cons 14 empty)))
+(check-expect (liste-carpi-2 (cons 2 (cons 8 (cons 21 empty)))) (cons 4 (cons 16 (cons 42 empty))))
 
-```
-(: kirmizi-rakam (natural -> image))
-
-(define kirmizi-rakam
-  (lambda (t)
-    (place-image 
-     (text (number->string t) 100 "red")
-     100 100
-     (empty-scene 200 200))))
-```
-
-`kirmizi-rakam` fonksiyonu `animate` in bizden istediği gibi bir doğal sayı alıyor ve resim üretiyor. Ürettiği resim işe verilen doğal sayının 200x200 boyutlarında boş bir sahneye kırmızı renkte yazılmış hali. `kirmizi-rakam` fonksiyonuna değişik doğal sayı değerleri vererek ürettiği resmi inceleyebilirsiniz.
-
-```
-(kirmizi-rakam 42)
-```
-Şimdi `animate` kullanarak similasyonu başlatabiliriz:
-
-```
-(animate kirmizi-rakam)
-```
-
-Gördüğünüz gibi `animate` fonksiyonu similasyonu başlatarak doğal sayıları tek tek `kirmizi-rakam` fonksiyonuna veriyor. `kirmizi-rakam` fonksiyonu ise kendisine verilen doğal sayıları kanvas'a çiziyor.
-
-Başka bir örnek ile öğrendiklerimizi pekiştirelim:
-
-```
-(define ufo-sahnesi
-  (lambda(h)
-    (underlay/xy (rectangle 100 100 "solid" "white") 50 h UFO)))
- 
-(define UFO
-  (underlay/align "center"
-                  "center"
-                  (circle 10 "solid" "green")
-                  (rectangle 40 4 "solid" "green")))
- 
-(animate ufo-sahnesi)
-```
-`ufo-sahnesi` fonksiyonunu dikkatlice incelerseniz UFO'nun nasıl yavaş yavaş aşağıda indiğini göreceksiniz.
-
-## big-bang
-
-`big-bang` daha karmaşık similasyonlar üretebileceğimiz bir fonksiyon. Bir çok parametre alıyor, ancak biz şimdilik isteğe bağlı olan parametrelerden sadece 2 tanesini kullanacağız. İmzası şu şekilde:
-
-
-```
-;(big-bang
-;  <başlangıç-hali>
-;  (on-tick ...)
-;  (to-draw ... ... ...)
-;  ....)
-```
-
-`big-bang` ılk parametre olan başlangıç halini kullanarak bir sahne başlatıyor ve saati çalıştırıyor. Saat her vurduğunda `on-tick` fonksiyonuna parametre olarak verdiğimiz fonksiyona sahnenin suanki halini verip bir sonraki sahnede dünyanın nasıl değiştiğini öğreniyor. `to-draw` fonksiyona verdiğimiz fonksiyonu kullarak da dünyamızı sahneye çiziyor.
-
-Kulağa çok karmaşık gelen bu tanımı anlayabilmek için daha önce `animate` fonksiyonu ile yaptığımız similasyonun aynısını şimdi bir de `big-bang` ile yapalım.
-
-```
-(define 1ekle
-  (lambda (t)
-    (+ 1 t)))
-
-(big-bang
-  1
-  (on-tick 1ekle)
-  (to-draw kirmizi-rakam))
-```
-Animasyonumuzda değişen tek şey sahnede göstereceğimiz sayı olduğundan, dünyamızı temsilen sadece bir doğal sayı kullanıyoruz. Başlangıç hali için `1` verdik. Saat her vurduğunda bu sayının bir artmasını istedik. Sahneye çizmek için ise daha önce tanımladığımız `kirmizi-rakam` fonksiyonunu kullandık. `big-bang` ile similasyonu çalıştırdığımızda daha önce `animate` ile yaptığımızın aynısını üretmiş olduk.
-
-Şimdi çok daha karmaşık bir animasyon yapalım. İçinde bulunduğu odanın duvarlarından seke seke ilerleyen kırmızı bir top yapacağız. Daha öncekine göre daha karmaşık olan bu animasyonu üretmek için dünyamızı temsilen kullandığımız veri yapısı da daha karmaşık olacak.
-
-```
-(define-record-procedures top
-  make-top
-  top?
-  (top-x
-   top-y
-   top-x-yon
-   top-y-yon))
-```
-
-`top`'un 4 niteliği var. x-koordinatını temsilen `top-x`, y-koordinatını temsilen `top-y`, topun x-koordunatındaki ivmesini temsilen `top-x-yon` ve y-koordinatındaki ivmesini temsilen `top-y-yon`.
-
-Saat her vurduğunda dünyamızın nasıl değişmesini istediğimizi `tick` fonksiyonunda tanımlayalım.
-
-```
-(: tick (top -> top))
-
-(check-expect (tick (make-top 1 50 2 1)) (make-top 3 51 2 1))
-(check-expect (tick (make-top 3 51 2 1)) (make-top 5 52 2 1))
-(check-expect (tick (make-top 5 52 2 1)) (make-top 7 53 2 1))
-(check-expect (tick (make-top 7 53 2 1)) (make-top 9 54 2 1))
-(check-expect (tick (make-top 0 53 -1 1)) (make-top 1 53 1 1))
-(check-expect (tick (make-top -4 67 -5 2)) (make-top 1 67 5 2))
-(check-expect (tick (make-top 200 50 3 2)) (make-top 199 50 -3 2))
-(check-expect (tick (make-top 7 0 5 -2)) (make-top 7 1 5 2))
-(check-expect (tick (make-top 5 -1 4 -2)) (make-top 5 1 4 2))
-(check-expect (tick (make-top 50 200 2 3)) (make-top 50 199 2 -3))
-
-(define tick
-  (lambda(t)
+(define liste-carpi-2
+  (lambda (lst)
     (cond
-      ((<= (top-x t) 0) (make-top 1 (top-y t) (* -1 (top-x-yon t)) (top-y-yon t)))
-      ((>= (top-x t) 200) (make-top 199 (top-y t) (* -1 (top-x-yon t)) (top-y-yon t)))
-      ((<= (top-y t) 0) (make-top (top-x t) 1 (top-x-yon t) (* -1 (top-y-yon t))))
-      ((>= (top-y t) 200) (make-top (top-x t) 199 (top-x-yon t) (* -1 (top-y-yon t))))
-      (else (make-top (+ (top-x t) (top-x-yon t)) (+ (top-y t) (top-y-yon t)) (top-x-yon t) (top-y-yon t)))))) 
+      ((empty? lst) empty)
+      (else (cons (* 2 (first lst)) (liste-carpi-2 (rest lst)))))))
 ```
 
-Topun duvarlara çarpınca geri sekmesini, çarpmadığı zamanlarda ise x ve y koordunatlarındaki ivmelerine göre hareket etmesini istiyoruz.
+```racket
+;; Bir sayı listesi alır ve her bir elemanın karesini hesaplayarak yeni bir liste döner.
+;; empty -> empty
+;; [1] -> [1](cons 1 (cons 2 empty))
+;; [1, 2] -> [1, 4]
+;; [2, 3, 5] -> [4, 9, 25]
 
-Dünyamızı çizmek için ise basitçe topu boş bir sahne üzerinde x ve y koordinatına yerleştirelim.
+;; ( : liste-karesi (sayi-listesi -> sayi-listesi))
 
+(check-expect (liste-karesi empty) empty)
+(check-expect (liste-karesi (cons 1 empty)) (cons 1 empty))
+(check-expect (liste-karesi (cons 1 (cons 2 empty))) (cons 1 (cons 4 empty)))
+(check-expect (liste-karesi (cons 2 (cons 3 (cons 5 empty)))) (cons 4 (cons 9 (cons 25 empty))))
+
+(define liste-karesi
+  (lambda (lst)
+    (cond
+      ((empty? lst) empty)
+      (else (cons (karesi (first lst)) (liste-karesi (rest lst)))))))
+
+
+(define karesi
+  (lambda (x)
+    (* x x )))
 ```
-(: draw (top -> image))
 
-(define draw
-  (lambda (t)
-    (place-image 
-     (circle 10 "solid" "red")
-     (top-x t) (top-y t)
-     (empty-scene 200 200))))
+```racket
+;; string-listesi
+;; - empty
+;; - (cons string string-listesi)
 ```
 
-Ve similasyonu baslatalim:
+```racket
+;; Bir string listesi alır ve liste içerisindeki tüm stringleri ard arda ekler.
+;; empty -> ""
+;; ["fatih"] -> "fatih"
+;; ["fatih", "koksal"] -> "fatih koksal"
+;; ["mehmet", "fatih", "koksal"] -> "mehmet fatih koksal"
 
-```
-(big-bang
-    (make-top 0 200 8 8)
-  (on-tick tick)
-  (to-draw draw 200 200))
+;; (: liste-birlestir (string-listesi -> string))
+
+(check-expect (liste-birlestir empty) "")
+(check-expect (liste-birlestir (cons "fatih" empty)) "fatih ")
+(check-expect (liste-birlestir (cons "fatih" (cons "koksal" empty))) "fatih koksal ")
+(check-expect (liste-birlestir (cons "mehmet" (cons "fatih" (cons "koksal" empty)))) "mehmet fatih koksal ")
+
+(define liste-birlestir
+  (lambda (lst)
+    (cond
+      ((empty? lst) "")
+      (else (string-append (first lst) " " (liste-birlestir (rest lst)))))))
 ```

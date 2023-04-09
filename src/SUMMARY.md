@@ -35,6 +35,9 @@
 - [Ders 10](./chapter-10/README.md)
   - [Ders Notları](./chapter-10/notes.md)
   - [Ev Ödevi](./chapter-10/homework.md)
+- [Ders 11](./chapter-11/README.md)
+  - [Ders Notları](./chapter-11/notes.md)
+  - [Ev Ödevi](./chapter-11/homework.md)
 --------
 
 [Dokümantasyon](./misc/documentation.md)

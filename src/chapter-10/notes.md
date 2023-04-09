@@ -1,29 +1,18 @@
 # Ders Notları
 
 ```
-;; x ve y koordinatlarını tanımlar
-(define-record-procedures koor
-  koor-oluştur
-  (koor-x
-   koor-y))
-
-(koor-oluştur 50 60)
-(koor-oluştur 20 70)
-```
-
-```
-;; Yılan oyunu için gerekli veri yapısını tanımlar
 (define-record-procedures yılan
   yılan-oluştur
-  (yılan-gövde
+  (yılan-x
+   yılan-y
    yılan-yön
    yem-x
    yem-y))
 
-(yılan-oluştur (cons (koor-oluştur 100 20) empty)  "sağ" 50 60)
-(yılan-oluştur (cons (koor-oluştur 100 50) (cons (koor-oluştur 100 20) empty)) "sol" 20 50)
-(yılan-oluştur empty "yukarı" 130 70)
-(yılan-oluştur (cons (koor-oluştur 100 50) (cons (koor-oluştur 100 20) (cons (koor-oluştur 0 75) empty))) "aşağı" 20 50)
+(yılan-oluştur 0 0 "sağ" 50 60)
+(yılan-oluştur 100 50 "sol" 20 50)
+(yılan-oluştur 80 210 "yukarı" 130 70)
+(yılan-oluştur 0 75 "aşağı" 20 50)
 ```
 
 ```
@@ -36,22 +25,23 @@
 
 (: yön-değiştir (yılan string -> yılan))
 
-(check-expect (yön-değiştir (yılan-oluştur (cons (koor-oluştur 0 0) empty) "sağ" 0 0) "up")  (yılan-oluştur (cons (koor-oluştur 0 0) empty) "yukarı" 0 0))
-(check-expect (yön-değiştir (yılan-oluştur (cons (koor-oluştur 0 0) empty) "yukarı" 0 0) "left")  (yılan-oluştur (cons (koor-oluştur 0 0) empty) "sol" 0 0))
-(check-expect (yön-değiştir (yılan-oluştur empty "sol" 0 0) "down")  (yılan-oluştur empty "aşağı" 0 0))
-(check-expect (yön-değiştir (yılan-oluştur empty "aşağı" 0 0) "right")  (yılan-oluştur empty "sağ" 0 0))
-(check-expect (yön-değiştir (yılan-oluştur empty "aşağı" 0 0) "up")  (yılan-oluştur empty "aşağı" 0 0))
-(check-expect (yön-değiştir (yılan-oluştur empty "yukarı" 0 0) "down")  (yılan-oluştur empty "yukarı" 0 0))
-(check-expect (yön-değiştir (yılan-oluştur empty "sol" 0 0) "right")  (yılan-oluştur empty "sol" 0 0))
-(check-expect (yön-değiştir (yılan-oluştur empty "sağ" 0 0) "left")  (yılan-oluştur empty "sağ" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 0 0 "sağ" 0 0) "up")  (yılan-oluştur 0 0 "yukarı" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 100 50 "yukarı" 0 0) "left")  (yılan-oluştur 100 50 "sol" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 80 20 "sol" 0 0) "down")  (yılan-oluştur 80 20 "aşağı" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 10 90 "aşağı" 0 0) "right")  (yılan-oluştur 10 90 "sağ" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 10 90 "aşağı" 0 0) "up")  (yılan-oluştur 10 90 "aşağı" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 10 90 "yukarı" 0 0) "down")  (yılan-oluştur 10 90 "yukarı" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 10 90 "sol" 0 0) "right")  (yılan-oluştur 10 90 "sol" 0 0))
+(check-expect (yön-değiştir (yılan-oluştur 10 90 "sağ" 0 0) "left")  (yılan-oluştur 10 90 "sağ" 0 0))
 
 (define yön-değiştir
   (lambda (yln tuş)
     (cond
-      [(and (key=? tuş "left") (not (string=? (yılan-yön yln) "sağ"))) (yılan-oluştur (yılan-gövde yln) "sol" (yem-x yln) (yem-y yln))]
-      [(and (key=? tuş "right") (not (string=? (yılan-yön yln) "sol"))) (yılan-oluştur (yılan-gövde yln) "sağ" (yem-x yln) (yem-y yln))]
-      [(and (key=? tuş "up") (not (string=? (yılan-yön yln) "aşağı"))) (yılan-oluştur (yılan-gövde yln) "yukarı" (yem-x yln) (yem-y yln))]
-      [(and (key=? tuş "down") (not (string=? (yılan-yön yln) "yukarı"))) (yılan-oluştur (yılan-gövde yln) "aşağı" (yem-x yln) (yem-y yln))]
+      [(and (key=? tuş "left") (not (string=? (yılan-yön yln) "sağ"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "sol" (yem-x yln) (yem-y yln))]
+      [(and (key=? tuş "right") (not (string=? (yılan-yön yln) "sol"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "sağ" (yem-x yln) (yem-y yln))]
+      [(and (key=? tuş "up") (not (string=? (yılan-yön yln) "aşağı"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "yukarı" (yem-x yln) (yem-y yln))]
+      [(and (key=? tuş "down") (not (string=? (yılan-yön yln) "yukarı"))) (yılan-oluştur (yılan-x yln) (yılan-y yln) "aşağı" (yem-x yln) (yem-y yln))]
+      [(key=? tuş "r") (yılan-oluştur 50 50 "sağ" (yem-x yln) (yem-y yln))]
       [else yln])))
 ```
 
@@ -61,48 +51,17 @@
 
 (: çiz (yılan -> image))
 
-(check-expect (çiz (yılan-oluştur empty "sol" 50 50)) (place-image (rectangle 10 10 "solid" "red") 50 50 (empty-scene 200 200)))
-(check-expect (çiz (yılan-oluştur (cons (koor-oluştur 50 50) (cons (koor-oluştur 100 100) empty)) "sol" 50 50)) (place-image (rectangle 10 10 "solid" "red") 50 50 (place-image (rectangle 10 10 "solid" "black") 100 100 (empty-scene 200 200))))
+(check-expect (çiz (yılan-oluştur 100 100 "sol" 50 50)) (place-image (rectangle 10 10 "solid" "red") 50 50 (place-image (rectangle 10 10 "solid" "black") 100 100 (empty-scene 200 200))))
 
 (define çiz
   (lambda (yln)
     (place-image
      (rectangle 10 10 "solid" "red")
      (yem-x yln) (yem-y yln)
-     (yılan-çiz (yılan-gövde yln)))))
-```
-
-```
-;; Bir koor listesi alır ve 200x200 boyutlarinda bir sahneye çizer
-
-(: yılan-çiz ((list-of koor)  -> image))
-
-(check-expect (yılan-çiz empty) (empty-scene 200 200))
-(check-expect (yılan-çiz (cons (koor-oluştur 50 50) empty)) (place-image (rectangle 10 10 "solid" "black") 50 50 (empty-scene 200 200)))
-(check-expect (yılan-çiz (cons (koor-oluştur 50 50) (cons (koor-oluştur 40 50) empty))) (place-image (rectangle 10 10 "solid" "black") 40 50 (place-image (rectangle 10 10 "solid" "black") 50 50 (empty-scene 200 200))))
-
-(define yılan-çiz
-  (lambda (gövde)
-    (cond
-     [(empty? gövde) (empty-scene 200 200)]
-     [else (place-image (rectangle 10 10 "solid" "black") (koor-x (first gövde)) (koor-y (first gövde)) (yılan-çiz (rest gövde)))])))
-```
-
-```
-;; Bir liste alir ve son elemanını silerek yeni bir liste döner
-
-(: son-elemanı-sil ((list-of koor) -> (list-of koor)))
-
-(check-expect (son-elemanı-sil empty) empty)
-(check-expect (son-elemanı-sil (cons (koor-oluştur 100 100) empty)) empty)
-(check-expect (son-elemanı-sil (cons (koor-oluştur 100 100) (cons (koor-oluştur 110 100) empty))) (cons (koor-oluştur 100 100) empty))
-
-(define son-elemanı-sil
-  (lambda (lst)
-    (cond
-     [(empty? lst) empty]
-     [(empty? (rest lst)) empty]
-     [else (cons (first lst) (son-elemanı-sil (rest lst)))])))
+     (place-image 
+      (rectangle 10 10 "solid" "black")
+      (yılan-x  yln) (yılan-y yln)
+      (empty-scene 200 200)))))
 ```
 
 ```
@@ -111,18 +70,18 @@
 
 (: ilerle (yılan -> yılan))
 
-(check-expect (ilerle (yılan-oluştur empty "sağ" 0 0)) (yılan-oluştur empty "sağ" 0 0))
-(check-expect (ilerle (yılan-oluştur (cons (koor-oluştur 100 100) empty) "sağ" 0 0)) (yılan-oluştur (cons (koor-oluştur 110 100) empty) "sağ" 0 0))
-(check-expect (ilerle (yılan-oluştur (cons (koor-oluştur 100 100) (cons (koor-oluştur 90 100) empty)) "sağ" 0 0)) (yılan-oluştur (cons (koor-oluştur 110 100) (cons (koor-oluştur 100 100) empty)) "sağ" 0 0))
+(check-expect (ilerle (yılan-oluştur 100 100 "sağ" 0 0)) (yılan-oluştur 110 100 "sağ" 0 0))
+(check-expect (ilerle (yılan-oluştur 100 100 "sol" 0 0)) (yılan-oluştur 90 100 "sol" 0 0))
+(check-expect (ilerle (yılan-oluştur 100 100 "yukarı" 0 0)) (yılan-oluştur 100 90 "yukarı" 0 0))
+(check-expect (ilerle (yılan-oluştur 100 100 "aşağı" 0 0)) (yılan-oluştur 100 110 "aşağı" 0 0))
 
 (define ilerle
   (lambda (yln)
     (cond
-      [(empty? (yılan-gövde yln)) yln]
-      [(string=? (yılan-yön yln) "sağ") (yılan-oluştur (cons (koor-oluştur (+ (koor-x (first (yılan-gövde yln))) 10)  (koor-y (first (yılan-gövde yln)))) (son-elemanı-sil (yılan-gövde yln))) (yılan-yön yln) (yem-x yln) (yem-y yln))]
-      [(string=? (yılan-yön yln) "sol") (yılan-oluştur (cons (koor-oluştur (- (koor-x (first (yılan-gövde yln))) 10)  (koor-y (first (yılan-gövde yln)))) (son-elemanı-sil (yılan-gövde yln))) (yılan-yön yln) (yem-x yln) (yem-y yln))]
-      [(string=? (yılan-yön yln) "yukarı") (yılan-oluştur (cons (koor-oluştur (koor-x (first (yılan-gövde yln)))  (- (koor-y (first (yılan-gövde yln))) 10)) (son-elemanı-sil (yılan-gövde yln))) (yılan-yön yln) (yem-x yln) (yem-y yln))]
-      [(string=? (yılan-yön yln) "aşağı") (yılan-oluştur (cons (koor-oluştur (koor-x (first (yılan-gövde yln)))  (+ (koor-y (first (yılan-gövde yln))) 10)) (son-elemanı-sil (yılan-gövde yln))) (yılan-yön yln) (yem-x yln) (yem-y yln))]
+      [(string=? (yılan-yön yln) "sağ") (yılan-oluştur (+ (yılan-x yln) 10) (yılan-y yln) (yılan-yön yln) (yem-x yln) (yem-y yln))]
+      [(string=? (yılan-yön yln) "sol") (yılan-oluştur (- (yılan-x yln) 10) (yılan-y yln) (yılan-yön yln) (yem-x yln) (yem-y yln))]
+      [(string=? (yılan-yön yln) "yukarı") (yılan-oluştur (yılan-x yln) (- (yılan-y yln) 10) (yılan-yön yln) (yem-x yln) (yem-y yln))]
+      [(string=? (yılan-yön yln) "aşağı") (yılan-oluştur (yılan-x yln) (+ (yılan-y yln) 10) (yılan-yön yln) (yem-x yln) (yem-y yln))]
       [else yln])))
 ```
 
@@ -131,18 +90,18 @@
 
 (: oyun-bitti? (yılan -> boolean))
 
-(check-expect (oyun-bitti? (yılan-oluştur (cons (koor-oluştur 100 100) empty) "sağ" 0 0)) #f)
-(check-expect (oyun-bitti? (yılan-oluştur (cons (koor-oluştur 201 100) empty) "sağ" 0 0)) #t)
-(check-expect (oyun-bitti? (yılan-oluştur (cons (koor-oluştur 100 201) empty) "sağ" 0 0)) #t)
-(check-expect (oyun-bitti? (yılan-oluştur (cons (koor-oluştur 300 100) empty) "sol" 0 0)) #t)
+(check-expect (oyun-bitti? (yılan-oluştur 100 100 "sağ" 0 0)) #f)
+(check-expect (oyun-bitti? (yılan-oluştur 201 100 "sağ" 0 0)) #t)
+(check-expect (oyun-bitti? (yılan-oluştur 100 201 "sağ" 0 0)) #t)
+(check-expect (oyun-bitti? (yılan-oluştur 300 100 "sol" 0 0)) #t)
 
 (define oyun-bitti?
   (lambda (yln)
     (cond
-      [(< (koor-x (first (yılan-gövde yln))) 5) #t]
-      [(> (koor-x (first (yılan-gövde yln))) 195) #t]
-      [(< (koor-y (first (yılan-gövde yln))) 5) #t]
-      [(> (koor-y (first (yılan-gövde yln))) 195) #t]
+      [(< (yılan-x yln) 5) #t]
+      [(> (yılan-x yln) 195) #t]
+      [(< (yılan-y yln) 5) #t]
+      [(> (yılan-y yln) 195) #t]
       [else #f])))
 ```
 
@@ -151,7 +110,7 @@
 
 (: son-sahne (yılan -> image))
 
-(check-expect (son-sahne (yılan-oluştur (cons (koor-oluştur 201 100) empty) "sağ" 0 0)) (place-image (text "Oyun Bitti!" 30 "red") 100 100 (empty-scene 200 200)))
+(check-expect (son-sahne (yılan-oluştur 201 100 "sağ" 0 0)) (place-image (text "Oyun Bitti!" 30 "red") 100 100 (empty-scene 200 200)))
 
 (define son-sahne
   (lambda (yln)
@@ -170,7 +129,7 @@
 ;; Yılanı (50,100) noktasından yönü sağ tarafa doğru olacak sekilde yerleştirerek simulasyonu başlatır.
 
 (big-bang
-    (yılan-oluştur (cons (koor-oluştur 15 5) (cons (koor-oluştur 5 5) empty)) "sağ" rastgele rastgele)
+    (yılan-oluştur 5 5 "sağ" rastgele rastgele)
   (on-key yön-değiştir)
   (on-tick ilerle 0.1)
   (stop-when oyun-bitti? son-sahne)

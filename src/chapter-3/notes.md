@@ -1,104 +1,88 @@
 # Ders Notları
 
+
+## Tasarım Reçetesi
+
+### 1. Açıklama
+
+### 2. Sözleşme
+
+### 3. Testler
+
+### 4. Kod
+
+
 ```racket
-;; Bir sayı alır, verilen sayı 17'ye eşit ya da daha büyükse #t
-;; değil ise #f döner
+;; Açıklama
+;; Verilen sayının karesini hesaplar
 
-(: ehliyet-alabilir (integer -> boolean))
+;; Sözleşme
+(: karesi (integer -> integer))
 
-(check-expect (ehliyet-alabilir 1) #f)
-(check-expect (ehliyet-alabilir 16) #f)
-(check-expect (ehliyet-alabilir 17) #t)
-(check-expect (ehliyet-alabilir 39) #t)
+;; Testler
+(check-expect (karesi 0) 0)
+(check-expect (karesi 2) 4)
+(check-expect (karesi -3) 9)
 
-(define ehliyet-alabilir
-  (lambda (yaş)
-    (cond
-      [(< yaş 17) #f]
-      [else #t])))
+;; Kod
+(define karesi
+  (lambda (x)
+    (* x x)))
 ```
 
 ```racket
-;; Verilen yaş değerine göre hangi okula gidilmesi gerektiğini söyler.
-;; < 0 -> "Okul yok"
-;; 0 - 5 -> "Kindergarten"
-;; 6 - 10 -> "Grundschule"
-;; 11 - 19 -> "Gymnasium"
-;; 20 -> ... -> "Universitaet"
+;; Açıklama:
+;; Yüksekliği ve genişliği verilen dikdörtgenin alanını hesaplar
 
-(check-expect (hangi-okul 5) "Kindergarten")
-(check-expect (hangi-okul 6) "Grundschule")
-(check-expect (hangi-okul 10) "Grundschule")
-(check-expect (hangi-okul 11) "Gymnasium")
-(check-expect (hangi-okul 14) "Gymnasium")
-(check-expect (hangi-okul 60) "Universitaet")
-(check-expect (hangi-okul 19) "Gymnasium")
-(check-expect (hangi-okul 20) "Universitaet")
+;; Sözleşme
+(: dikdortgen-alani (integer integer -> integer))
 
-(: hangi-okul (integer -> string))
+;; Testler:
+(check-expect (dikdortgen-alani 1 1) 1)
+(check-expect (dikdortgen-alani 1 2) 2)
+(check-expect (dikdortgen-alani 3 5) 15)
 
-(define hangi-okul
-  (lambda (yaş)
-    (cond
-      [(<= yaş 0) "Okul yok"]
-      [(<= yaş 5) "Kindergarten"]
-      [(and (>= yaş 6) (<= yaş 10)) "Grundschule"]
-      [(and (>= yaş 11) (<= yaş 19)) "Gymnasium"]
-      [else "Universitaet"])))
+;; Kod
+(define dikdortgen-alani
+  (lambda (genislik yukseklik)
+    (* genislik yukseklik)))
+```
+
+
+```racket
+;; Açıklama:
+;; Taban fiyat 10.16 Euro ve kullanım bedeli 17.45 Cents/KWh olmak üzere,
+;; verilen kullanım miktarı için aylık faturayı hesaplar
+
+;; Sözleşme:
+(: fatura-hesapla (rational -> rational))
+
+;; Testler:
+(check-within (fatura-hesapla 0) 10.16 0.01)
+
+;; Kod:
+(define fatura-hesapla
+  (lambda (x)
+    (+ 10.16 (/ (* 17.45 x) 100))))
 ```
 
 ```racket
-;; Bir sayı alır ve trafik lambası resmi üretir.
-;; Verilen sayı;
-;; 10'a eşit ya da daha küçükse kırmızı ışık,
-;; 12'ye eşit ya da daha küçükse sarı ışık,
-;; 17'ye eşit ya da dağa küçükse yeşik ışık,
-;; 19'a eşit ya da daha küçükse sarı ışık,
-;; 19'dan daha sonra da kırmızı ışık yanıyormuş gibi gösterir.
+(define roket (circle 20 "solid" "red"))
+(define arka-plan (rectangle 200 200 "solid" "Medium Cyan"))
 
-(: trafik-lambasi-sn (rational -> image))
+;; Açıklama:
+;; Verilen x koordinatına göre rocket resmini arka-planda gösterir.
+;; y koordnatı arka-planın ortası olarak sabit kalır.
 
-(check-expect (trafik-lambasi-sn 1) kirmizi-isik)
-(check-expect (trafik-lambasi-sn 9) kirmizi-isik)
-(check-expect (trafik-lambasi-sn 10) kirmizi-isik)
-(check-expect (trafik-lambasi-sn 11) sari-isik)
-(check-expect (trafik-lambasi-sn 12) sari-isik)
-(check-expect (trafik-lambasi-sn 13) yesil-isik)
-(check-expect (trafik-lambasi-sn 17) yesil-isik)
-(check-expect (trafik-lambasi-sn 18) sari-isik)
-(check-expect (trafik-lambasi-sn 19) sari-isik)
-(check-expect (trafik-lambasi-sn 20) kirmizi-isik)
-(check-expect (trafik-lambasi-sn 180) kirmizi-isik)
+;; Sözleşme
+(: giden-roket (integer -> image))
 
-(define kirmizi (circle 40 "solid" "red"))
-(define sari (circle 40 "solid" "yellow"))
-(define yesil (circle 40 "solid" "green"))
-(define gri (circle 40 "solid" "grey"))
-(define lamba (rectangle 100 260 "solid" "black"))
-(define kirmizi-isik (overlay (above kirmizi gri gri) lamba))
-(define sari-isik (overlay (above gri sari gri) lamba))
-(define yesil-isik (overlay (above gri gri yesil) lamba))
+;; Testler:
+(check-expect (giden-roket 30) (overlay/xy roket -30 -100 arka-plan))
+(check-expect (giden-roket 0) (overlay/xy roket 0 -100 arka-plan))
 
-(define trafik-lambasi-sn
-  (lambda (sn)
-    (cond
-      ((<= sn 10) kirmizi-isik)
-      ((<= sn 12) sari-isik)
-      ((<= sn 17) yesil-isik)
-      ((<= sn 19) sari-isik)
-      (else kirmizi-isik))))
-
-
-;; Bir sayı alır ve bu sayıyı 28'e bölerek trafik-lambasi-sn fonksiyonunu çağırarak bir resim üretir.
-;; animate fonksiyonu her saniyede 28 kare resim gösterdiği için böyle bir yöntem kullanıyoruz.
-
-(: trafik-lambasi (integer -> image))
-
-(check-expect (trafik-lambasi 0) kirmizi-isik)
-(check-expect (trafik-lambasi 1) kirmizi-isik)
-(check-expect (trafik-lambasi 308) sari-isik)
-
-(define trafik-lambasi
-  (lambda (sn)
-    (trafik-lambasi-sn (/ sn 28))))
+;; Kod
+(define giden-roket
+  (lambda (x)
+     (overlay/xy roket (* -1 x) -100 arka-plan)))
 ```

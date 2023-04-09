@@ -65,79 +65,33 @@ Peki bu ifadeyi içinde değişken olacak şekilde kullanmak istesek? Yani kulla
     (+ 10.16 (/ (* 17.45 x) 100))))
 ```
 
+## Örnek Fonksiyonlar
+
+Bir sayı alan ve verilen sayının karesini hesaplayan bir fonksiyon yazalım:
 
 ```racket
-;; Açıklama
-;; Verilen sayının karesini hesaplar
-
-;; Sözleşme
-(: karesi (integer -> integer))
-
-;; Testler
-(check-expect (karesi 0) 0)
-(check-expect (karesi 2) 4)
-(check-expect (karesi -3) 9)
-
-;; Kod
 (define karesi
   (lambda (x)
     (* x x)))
 ```
 
-```racket
-;; Açıklama:
-;; Taban fiyat 10.16 Euro ve kullanım bedeli 17.45 Cents/KWh olmak üzere,
-;; verilen kullanım miktarı için aylık faturayı hesaplar
-
-;; Sözleşme:
-(: fatura-hesapla (rational -> rational))
-
-;; Testler:
-(check-within (fatura-hesapla 0) 10.16 0.01)
-
-;; Kod:
-(define fatura-hesapla
-  (lambda (x)
-    (+ 10.16 (/ (* 17.45 x) 100))))
-```
+Dikdörtgenin yüksekliği ve genişliğini temsil eden 2 sayı alan ve dikdörtgenin alanını hesaplayan bir fonksiyon yazalım.
 
 ```racket
-;; Açıklama:
-;; Yüksekliği ve genişliği verilen dikdörtgenin alanını hesaplar
-
-;; Sözleşme
-(: dikdortgen-alani (integer integer -> integer))
-
-;; Testler:
-(check-expect (dikdortgen-alani 1 1) 1)
-(check-expect (dikdortgen-alani 1 2) 2)
-(check-expect (dikdortgen-alani 3 5) 15)
-
-;; Kod
 (define dikdortgen-alani
   (lambda (genislik yukseklik)
     (* genislik yukseklik)))
 ```
 
+Roketin x koordinatini temsil eden bir sayi alan ve roketi 200x200 boyutlarında boş bir arka plan üzerine (x, 100) noktasina yerleştiren bir fonksiyon yazalım.
+
 ```racket
 (define roket (circle 20 "solid" "red"))
-(define arka-plan (rectangle 200 200 "solid" "Medium Cyan"))
+(define arka-plan (empty-scene 200 200))
 
-;; Açıklama:
-;; Verilen x koordinatına göre rocket resmini arka-planda gösterir.
-;; y koordnatı arka-planın ortası olarak sabit kalır.
-
-;; Sözleşme
-(: giden-roket (integer -> image))
-
-;; Testler:
-(check-expect (giden-roket 30) (overlay/xy roket -30 -100 arka-plan))
-(check-expect (giden-roket 0) (overlay/xy roket 0 -100 arka-plan))
-
-;; Kod
 (define giden-roket
   (lambda (x)
-     (overlay/xy roket (* -1 x) -100 arka-plan)))
+     (place-image roket x 100 arka-plan)))
 ```
 
 `Language > Add Teackpack` menüsünden `universe.ss` isimli eğitim paketini yüklerseniz (`Run` butonuna basmayı unutmayalım), yazdığınız `giden-roket` programını bir anımasyon haline getirebilirsiniz.

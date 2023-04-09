@@ -1,5 +1,5 @@
-# Ders 6
+# Ders 5
 
-Bu dersimizde basit animasyonlar üretmek için kullandığımız `animate` fonksiyonunu hatırlattıktan sonra daha gelişmiş animasyonlar üretmemizi sağlayacak `big-bang` fonksiyonunu öğreneceğiz.
+Bu dersimizde liste veri yapısını ve `cons`, `first`, `rest` fonksiyonlarını kullanarak listeler alan veya üreten foknsiyonları inceleyeceğiz.
 
 Haydi başlayalım...
