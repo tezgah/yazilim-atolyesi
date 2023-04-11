@@ -1,5 +1,5 @@
 # Ders 2
 
-Bu dersimizde problem çözerken bize yardımcı olan `Tasarım Reçetesi`'ni öğrenecek ve onu kullanarak yeni fonksiyonlar tanımlayacağız.
+İlk dersimizde hep daha önce yazılmış olan fonksiyonları kullandık. Bu dersimizde ise `lambda` fonksiyonunu kullanarak parametre alabilen fonksiyonlar yazmayı öğreneceğiz.
 
 Haydi başlayalım...
