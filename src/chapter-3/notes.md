@@ -5,6 +5,9 @@
 
 ### 1. Açıklama
 
+İstenen işlevin ne tür verileri tükettiğini ve ürettiğini belirtin. Fonksiyonun neyi hesapladığı sorusuna kısa ve öz bir cevap formüle edin. İmzaya uygun bir taslak tanımlayın.
+
+
 ### 2. Sözleşme
 
 ### 3. Testler
