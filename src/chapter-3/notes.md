@@ -5,14 +5,21 @@
 
 ### 1. Açıklama
 
-İstenen işlevin ne tür verileri tükettiğini ve ürettiğini belirtin. Fonksiyonun neyi hesapladığı sorusuna kısa ve öz bir cevap formüle edin. İmzaya uygun bir taslak tanımlayın.
-
+Fonksiyonun neyi hesapladığı sorusuna kısa ve öz bir cevap verin.
 
 ### 2. Sözleşme
 
+İstenen fonksiyonun ne tür verileri tükettiğini ve ürettiğini belirtin. 
+
 ### 3. Testler
 
+Fonksiyonun sözleşmesine ve açıklamasına uygun örnekler kullanarak testler yazın ve fonksiyonun tüm testleri geçtiğinden emin olun. Problemi daha iyi anlayabilmek ve hataları önceden keşfedebilmek için bu adım çok önemlidir. Testler ayrıca, ihtiyaç duyulduğunda diğerlerinin fonksiyonu anlamasına yardımcı olur.
+
 ### 4. Kod
+
+Artık çözülmesi gereken problemi daha iyi anladığımıza göre önce fonksiyonun şablonunu, sonra da kodunu yazabiliriz.
+
+## Örnekler
 
 
 ```racket
