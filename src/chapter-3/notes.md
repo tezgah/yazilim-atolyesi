@@ -3,6 +3,10 @@
 
 ## Tasarım Reçetesi
 
+Tasarım reçetesi, problem tanımından yola çıkarak kendimize sorular sora sora, sorunu çözen bir programa ulaşmak için adım adım ilerleyebileceğimiz bir süreç sunar.
+
+Bu yaklaşımın yeniliği, başlangıç seviyesi programlar için ara ürünlerin oluşturulmasıdır. Bir acemi sıkıştığında, bir uzman veya bir eğitmen mevcut ara ürünleri inceleyebilir. Teftiş muhtemelen tasarım sürecindeki genel soruları kullanır ve böylece acemiyi kendini düzeltmeye yönlendirir. Ve bu kendi kendini güçlendiren süreç, programlama ve program tasarımı arasındaki temel farktır.
+
 ### 1. Açıklama
 
 Fonksiyonun neyi hesapladığı sorusuna kısa ve öz bir cevap verin.
