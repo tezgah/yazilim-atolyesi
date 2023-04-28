@@ -26,19 +26,29 @@ Artık çözülmesi gereken problemi daha iyi anladığımıza göre önce fonks
 
 ## Örnekler
 
+Tasarım reçetesini kullanmayı öğrenmek için, önceki derslerimizde tanımladığımız fonksiyonları şimdi bir de bu yöntemi kullanarak tanımlayalım. Her bir aşamada tasarım reçetesinin sorularını kendimize soralım ve ara ürünleri oluşturalım. Böylece adım adım çözüme ilerleyeceğiz.
+
 
 ```racket
+;; Soru 1: Bu fonksiyon neyi hesaplıyor?
 ;; Açıklama
 ;; Verilen sayının karesini hesaplar
 
+;; Soru 2: Bu fonksiyon ne tür veriler tüketiyor ve üretiyor?
 ;; Sözleşme
 (: karesi (integer -> integer))
 
+;; Soru 3: Bir kaç örnek verebilir misin?
 ;; Testler
 (check-expect (karesi 0) 0)
 (check-expect (karesi 2) 4)
 (check-expect (karesi -3) 9)
 
+;; Soru 4: Son olarak fonksiyonun şablonunu ve kodunu yazabilir misin?
+;; Şablon
+;; (define karesi
+;;   (lambda (x)
+;;     (...)))
 ;; Kod
 (define karesi
   (lambda (x)
