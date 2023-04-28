@@ -1,5 +1,6 @@
 # Ders Notları
 
+Önceki derslerimizde çok basit işler yapan fonksiyonlar tanımladık. Bazılarını kolayca yazabildik, ancak işler zorlaştıkça hatasız çalışan kodu üretebilmek o kadar da kolay olmayabiliyor. Bir çözüm üretebilmek için öncelikle problemin kendisini analiz edip iyice anlamamız gerekiyor. İşte bu aşamada `Tasarım Reçetesi` diye adlandırdığımız bir yöntem bize yardımcı olacak.
 
 ## Tasarım Reçetesi
 
