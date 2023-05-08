@@ -2,6 +2,10 @@
 
 Aşağıdaki ödevleri yaparken her bir fonksiyon için `Açıklama`, `Sözleşme`, `Testler` ve `Kod` aşamalarını tek tek yapmayı unutmayalım.
 
+## Önceki Ödevler
+
+Ders 2'nin ödevlerinde `negatife çevir`, `üçgenin alanı` ve `pisagor bağıntısı` fonksiyonlarının sadece kodunu yazmanızı istemiştik. Şimdi ise bu fonksiyonarlı tasarım reçetesine uygun olarak düzenleyelim. Her bir fonksiyona `Açıkmala`, `Sözleşme` ve `Test` bölümlerini de ekleyelim.
+
 ## Birler Basamağı
 
 Bir sayı alan ve aldığı sayının birler basamağındaki rakamı dönen bir fonksiyon yaz.
