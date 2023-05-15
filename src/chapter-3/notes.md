@@ -6,7 +6,9 @@
 
 Tasarım reçetesi, problem tanımından yola çıkarak kendimize sorular sora sora, sorunu çözen bir programa ulaşmak için adım adım ilerleyebileceğimiz bir süreç sunar.
 
-Bu yaklaşımın yeniliği, başlangıç seviyesi programlar için ara ürünlerin oluşturulmasıdır. Bir acemi sıkıştığında, bir uzman veya bir eğitmen mevcut ara ürünleri inceleyebilir. Teftiş muhtemelen tasarım sürecindeki genel soruları kullanır ve böylece acemiyi kendini düzeltmeye yönlendirir. Ve bu kendi kendini güçlendiren süreç, programlama ve program tasarımı arasındaki temel farktır.
+Bu yaklaşımın yeniliği, başlangıç seviyesi programlar için ara ürünlerin oluşturulmasıdır. Bir öğrenci sıkıştığında, bir uzman veya bir eğitmenin mevcut ara ürünleri inceleyerek yardımcı olabilir. Bunun için tasarım sürecindeki genel soruları kullarak öğrencinin problemi daha iyi anlamasına yardımcı olur ve hatasını kendisinin bulmasını sağlamaya çalışır. İşte bu kendi kendini güçlendiren süreç, programlama ve program tasarımı arasındaki temel farktır.
+
+Şimdi de tasarım reçetesini oluşturan ara ürünleri inceleyelim:
 
 ### 1. Açıklama
 
