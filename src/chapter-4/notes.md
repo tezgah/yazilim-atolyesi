@@ -1,6 +1,10 @@
 # Ders Notları
 
+Bazen hesaplamaların duruma bağlı olarak farklı şekilde ilerlemesi gerekebilir. Örneğin, zıplayan top animasyonu yaptığımızı düşünelim. Top serbest düşüş yaparken program normal bir şekilde ilerler, ancak top canvas'ın alt kenarına eriştiğinde onun daha fazla aşağı inmesini engellememiz gerekir.
+
+
 ```racket
+;; Yaşı verilen bir kişinin ehliyet alıp alamayacağını söyler.
 ;; Bir sayı alır, verilen sayı 17'ye eşit ya da daha büyükse #t
 ;; değil ise #f döner
 
