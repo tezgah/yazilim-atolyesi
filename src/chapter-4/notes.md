@@ -1,6 +1,17 @@
 # Ders Notları
 
-Bazen hesaplamaların duruma bağlı olarak farklı şekilde ilerlemesi gerekebilir. Örneğin, zıplayan top animasyonu yaptığımızı düşünelim. Top serbest düşüş yaparken program normal bir şekilde ilerler, ancak top canvas'ın alt kenarına eriştiğinde onun daha fazla aşağı inmesini engellememiz gerekir.
+Bazen hesaplamaların duruma bağlı olarak farklı şekilde ilerlemesi gerekebilir. Örneğin, zıplayan top animasyonu yaptığımızı düşünelim. Top serbest düşüş yaparken program normal bir şekilde ilerler, ancak top canvas'ın alt kenarına eriştiğinde onun daha fazla aşağı inmesini engellememiz gerekir. Yani bir nevi bir karar mekanızması oluşturmamız gerekir. `cond` fonksiyonu tam da bu işi yapmaya yarıyor. Yapısı şu şekilde ifade edilebilir:
+
+```racket
+(cond [soru-ifadesi-1 cevap-ifadesi-1]
+      [soru-ifadesi-2 cevap-ifadesi-2]
+      ...
+      [else cevap-ifadesi])
+```
+
+`cond` kendisine verilen soru ifadelerini sırası ile çalıştırarak ilk #true dönen ifadeye karşılık gelen cevap ifadesini değerlendirir. Soru ifadelerinden hiçbiri #true olarak değerlendirilmezse, koşul değeri `else` yan tümcesinin cevap ifadesidir. Eğer `else` kısmı yok ise ve soru ifadelerinden hiç biri #true olarak değerlendirilmedi ise bu bir hatadır. Yada verilen soru ifadelerinden herhangi biri boolean (#true yada #false) dönen bir ifade değilse, bu durumda da bir hata mesajı döner.
+
+Örnekler üzerinden inceleyelim:
 
 
 ```racket
