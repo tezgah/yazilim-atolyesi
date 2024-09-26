@@ -4,6 +4,7 @@
    1. 42 * 6
    2. 23 + (42 / 7)
    3. (12 * 5) + (4 * (22 + 17))
+   4. 34 - 14 * 2 + 12 / 4
 
 2. Racket dili tarafından tanımlanmış [circle](../misc/documentation.md#circle), [rectangle](../misc/documentation.md#rectangle), [star](../misc/documentation.md#star), [overlay](../misc/documentation.md#overlay) ve [overlay/xy](../misc/documentation.md#overlayxy) gibi fonksiyonları kullanarak Türk Bayrağımızı çizebilir misiniz?
 

@@ -23,15 +23,15 @@ Bu ayarı yaptıktan sonra DrRacket programını yeniden başlatmanız gerekmekt
 DrRacket, programlamaya giriş eğitimini kolaylaştırmak için bizlere yardımcı diller ve eğitim paketleri sunar. Şimdi bu ayarları yapalım:
 
 ```
-Language > Choose Language > Die Macht der Abstraktion - Anfänger
-Language > Add Teachpack > Image2.ss
+Language > Choose Language > Schreibe Dein Programm - Anfänger
+Language > Add Teachpack > Image.rkt
 ```
 
 Dil ve eğitim paketi seçtikten sonra `Run` tuşuna basarak yaptığımız değişiklikleri kullanıma alalım.
 
 ![Dil ve Eğitim Paketi Ayarları](drracket_lang_teachpack.png) 
 
-DrRacket 2 ayrı pencereden oluşur. Bunlar `Definition Window` (Tanımlama Penceresi) ve `Interaktion Window` (Etkileşim Penceresi) olarak adlandırılır.
+DrRacket iki ayrı pencereden oluşur. Bunlar `Tanımlama Penceresi` (Definition Window) ve `Etkileşim Penceresi` (Interaktion Window) olarak adlandırılır.
 
 Etkileşim penceresini kullanarak Racket dilini tanımaya başlayalım.
 
@@ -135,7 +135,7 @@ Racket'da bulabileceğiniz bir başka değer ise `image` (Resim). Aşağıdaki i
 | &#x2730; | Resimler | image |
 
 
-String turunu kullanarak da hesaplamalar yapabiliriz:
+`String` türünden değerler kullanarak da hesaplamalar yapabiliriz:
 
 ```racket
 (string-append "Merhaba" "Fatih")
@@ -144,14 +144,14 @@ String turunu kullanarak da hesaplamalar yapabiliriz:
 (string->number "42")
 ```
 
-Ya da resim kullanarak:
+Ya da `image` (resim) kullanarak:
 
 ```racket
 (circle 20 "solid" "red")
 (rectangle 100 50 "outline" "blue")
 (star 50 "solid" "red")
 (above (circle 20 "solid" "red") (rectangle 100 50 "solid" "blue"))
-(överlay (circle 30 "solid" "red") (rectangle 200 100 "outline" "black"))
+(overlay (circle 30 "solid" "red") (rectangle 200 100 "outline" "black"))
 ```
 
 Bknz: [circle](../misc/documentation.md#circle), [rectangle](../misc/documentation.md#rectangle), [above](../misc/documentation.md#above), [overlay](../misc/documentation.md#overlay), [overlay/xy](../misc/documentation.md#overlayxy)
