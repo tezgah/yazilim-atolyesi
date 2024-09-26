@@ -2,11 +2,11 @@
 
 Merhaba,
 
-DiTiB Bonn bünyesinde sunduğumuz `Yazılım Atölyesi` sayfasını görüntülemektesiniz. Bu sayfada eğitim içeriği ve kullandığımız materyaller hakkında bilgiler bulabilirsiniz.
+`Yazılım Atölyemize` hoş geldiniz. Bu sayfada eğitim içeriği ve kullandığımız materyaller hakkında bilgiler bulabilirsiniz.
 
 ## Yazılım Atölyesi nedir?
 
-Yazılım Atölyesi genel programlama tekniklerini öğretir ve gençlerin problem çözme kabiliyetlerini geliştirebilecekleri bir müfredat sunar. Öğrenciler `Tasarım Reçetesi` olarak isimlendrilen bir yöntem kullanarak öncelikle problemi anlamaya yönlendirilir. Problem anlaşıldıktan sonra uygun bir yöntem kullanılarak çözüm üretilir.
+Yazılım Atölyesi genel programlama tekniklerini öğretir ve gençlerin problem çözme kabiliyetlerini geliştirebilecekleri bir müfredat sunar. Öğrenciler `Tasarım Reçetesi` olarak isimlendrilen bir yöntem kullanarak öncelikle karşılaştıkları problemi anlamaya yönlendirilir. Problem anlaşıldıktan sonra uygun bir yöntem kullanılarak çözüm üretilir.
 
 Derslerimiz programlama öğrenmek isteyen herkese açık ve ücretsizdir. 12-20 yaş arası gençleri özellikle bekliyoruz. Derslere katılmak için herhangibir programlama bilgisi gerekmemektedir.
 
@@ -18,10 +18,6 @@ Aşağıda maddeler halinde sıraladığımız konular Yazılım Atölyesi'nin a
 - Word, Excel, Powerpoint programları
 - Web sitesi hazırlama
 - iOS/Android uygulamaları geliştirme
-
-## Dersler
-
-Derslerimiz Pazar günleri Almanya saati ile 14:00'da, Türkiye saati ile 15:00'da online olarak yapılmaktadır. Derse davet bağlantısı dersten önce whatsapp grubundan paylaşılmaktadır. Henüz gruba ekli değilseniz iletişim sayfamızdaki bilgileri kullanarak bize ulaşabilirsiniz.
 
 ## Kaynaklar & Materyaller
 

@@ -1,1 +1,1 @@
-`DiTiB Bonn` bunyesinde duzenlenen `DitiB Yazilim Kampi` isimli egitim programinin icerik sayfasidir. Baslangic sayfasina [buradan](./src/README.md) ulasabilirsiniz.
+`Yazılım Atölyesi` isimli eğitim programının içerik sayfasıdır. Baslangıç sayfasına [buradan](./src/README.md) ulaşabilirsiniz.
