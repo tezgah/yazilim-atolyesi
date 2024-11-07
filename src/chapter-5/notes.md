@@ -1,11 +1,11 @@
 # Ders Notları
 
 ```racket
-(define-record-procedures ogrenci
+(define-record ogrenci
   make-ogrenci
   ogrenci?
-  (ogrenci-adi
-   ogrenci-soyadi))
+  (ogrenci-adi string)
+  (ogrenci-soyadi string))
 
 (define ben (make-ogrenci "fatih" "koksal"))
 (define sen (make-ogrenci "ali" "kurnaz"))
@@ -28,11 +28,11 @@
 ```
 
 ```racket
-(define-record-procedures nokta
+(define-record nokta
   make-nokta
   nokta?
-  (nokta-x
-   nokta-y))
+  (nokta-x integer)
+  (nokta-y integer))
 
 ;; İki nokta alır ve birbirleri ile toplayarak yeni bir nokta döner
 ;; İki noktanın toplamı x ve y koordinatlarının toplamına eşittir
@@ -48,11 +48,11 @@
 ```
 
 ```racket
-(define-record-procedures nokta
+(define-record nokta
   make-nokta
   nokta?
-  (nokta-x
-   nokta-y))
+  (nokta-x integer)
+  (nokta-y integer))
 
 ;; Koordinat duzlemi uzerinde 2 nokta alir ve aralarindaki uzakligi hesaplar
 
