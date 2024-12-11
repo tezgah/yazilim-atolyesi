@@ -45,7 +45,7 @@ Bu ifadeyi bu çalıştırabilmek için `KULLANIM-MIKTARI` yazan yere gerçek de
 Peki bu ifadeyi içinde değişken olacak şekilde kullanmak istesek? Yani kullanılan elektrik miktarı değiştikçe hesaplayabilen bir fonksiyon yazmak istesek. `lambda` fonksiyonu tam da bu iş için var:
 
 ```racket
-(lambda ... ...)
+(lambda (...) ...)
 ```
 
 `lambda` birinci parametrede verdiğimiz değişken isimlerini ikinci parametredeki ifadece yerine koyarak bize bir fonksiyon (prosedür) geri döner.
