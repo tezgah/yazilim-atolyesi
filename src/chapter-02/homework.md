@@ -1,18 +1,6 @@
 # Ev Ödevi
 
-1. `DrRacket` programını [web sayfasından](https://download.racket-lang.org/) indirerek bilgisayarımıza kuralım.
-   
-
-2. Derste anlatıldığı gibi `DrRacket` için dil ve eğitim paketi ayarlarını yapalım. Dil olarak `Schreibe Dein Programm - Anfänger`, eğitim paketi olarak da `Image.rkt` secelim. 
-
-3. Aşağıdaki matematiksel ifadeleri `Racket` diline çevirerek `Etkileşim Penceresi`'nde çalıştıralım:
-   1. `42 * 6`
-   2. `23 + (42 / 7)`
-   3. `(12 * 5) + (4 * (22 + 17))`
-   4. `34 - 14 * 2 + 12 / 4`
-
-4. Racket dili tarafından tanımlanmış [circle](../misc/documentation.md#circle), [rectangle](../misc/documentation.md#rectangle), [star](../misc/documentation.md#star), [overlay](../misc/documentation.md#overlay) ve [overlay/xy](../misc/documentation.md#overlayxy) gibi fonksiyonları kullanarak Türk Bayrağımızı çizebilir misiniz?
-
+  
 5. Derste yaptığımız Alman Bayrağı'nın gerçek oranı 3/5'tır. Yani genişliği 5 birim ise yüksekliği 3 birimdir. Dolayısı ile her bir rengi oluşturan dikdörtgenlerin yükseklikleri 1'er birimdir. Öyle bir Alman Bayrağı yapalım ki `genişlik` değerini kaç verirsek geri kalan ölçüleri ona göre ayarlasın ve böylece istediğimiz boyutta bir bayrak çizebilelim.
 
    Örnek:

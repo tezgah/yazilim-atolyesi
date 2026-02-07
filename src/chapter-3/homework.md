@@ -55,7 +55,7 @@ x ve y koordinatlarını temsil eden iki sayı alan ve verilen bu koordinatlara 
 
 ![x=0, y=0](../images/chapter_2_homework.png)
 
-Örnek 2: x=-100 ve y=-100 değerleri için;
+Örnek 2: x=100 ve y=100 değerleri için;
 
 ![x=100, y=100](../images/chapter_2_homework_100_100.png)
 

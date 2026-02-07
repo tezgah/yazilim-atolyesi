@@ -7,7 +7,8 @@
   (top-x
    top-y))
 ```
-```
+
+```scheme
 (: change (top string -> top))
 
 (check-expect (change (make-top 100 100) "left") (make-top 90 100))
@@ -26,6 +27,7 @@
     [(key=? a-key "r")  (make-top 100 100)]
     [else t])))
 ```
+
 ```
 (: jump (top integer integer string -> top))
 

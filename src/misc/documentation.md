@@ -22,7 +22,7 @@ Verilen tüm resimleri merkezleri boyunca hizalanmış dikey bir sıraya yerleş
 
 Verilen yarıçap, mod ve renk argümanlarını kullanarak bir daire oluşturur.
 
-Mod, `solid` ya da `outline` değerlerinden biri olabilir.
+Mod, `"solid"` ya da `"outline"` değerlerinden biri olabilir.
 
 Renk isimleri için büyük/küçük harf farketmez. "black" ve "Black" aynı renktir. Ayrıca boşluk karakteri de önemsenmez. Yani "light red" ve "lightred" aynı renktir. Kullanabileceğiniz tüm renklerin listesi için [buraya](https://docs.racket-lang.org/draw/color-database___.html) bakabilirsiniz.
 
