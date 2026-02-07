@@ -2,22 +2,22 @@
 
 ```
 ;; x ve y koordinatlarını tanımlar
-(define-record-procedures koor
+(define-record koor
   koor-oluştur
-  (koor-x
-   koor-y))
+  (koor-x number)
+  (koor-y number))
 
 (koor-oluştur 50 60)
 (koor-oluştur 20 70)
 ```
 ```
 ;; Yılan oyunu için gerekli veri yapısını tanımlar
-(define-record-procedures yılan
+(define-record yılan
   yılan-oluştur
-  (yılan-gövde
-   yılan-yön
-   yem-x
-   yem-y))
+  (yılan-gövde (list-of koor))
+  (yılan-yön string)
+  (yem-x number)
+  (yem-y number))
 
 (yılan-oluştur (cons (koor-oluştur 100 20) empty)  "sağ" 50 60)
 (yılan-oluştur (cons (koor-oluştur 100 50) (cons (koor-oluştur 100 20) empty)) "sol" 20 50)
